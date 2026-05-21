@@ -235,10 +235,209 @@ export const gads_add_negative = {
   },
 }
 
+// ---------------------------------------------------------------------------
+// gads_campaign_overlap
+// ---------------------------------------------------------------------------
+
+export const gads_campaign_overlap = {
+  name: 'gads_campaign_overlap',
+  description: 'Analyze keyword overlap, negative keyword cross-matching, and search-term cannibalization between primary campaigns and their _Secondary counterparts. Auto-detects pairs from a prefix or accepts explicit pairs.',
+  inputSchema: z.object({
+    campaign_prefix: z.string().optional().describe('Prefix to auto-detect pairs, e.g. "Test_". Finds campaigns where a "<name>_Secondary" also exists.'),
+    campaign_pairs: z.array(z.object({ primary: z.string(), secondary: z.string() })).optional().describe('Explicit {primary, secondary} pairs. Overrides auto-detection.'),
+    date_range_days: z.number().optional().default(7).describe('Days back for search-term and performance overlap (max 90)'),
+  }),
+  async handler({ campaign_prefix, campaign_pairs, date_range_days }: {
+    campaign_prefix?: string
+    campaign_pairs?: { primary: string; secondary: string }[]
+    date_range_days?: number
+  }) {
+    const days = Math.max(1, Math.min(date_range_days ?? 7, 90))
+    const end = new Date()
+    const start = new Date(end.getTime() - (days - 1) * 86_400_000)
+    const isoDate = (d: Date) => d.toISOString().slice(0, 10)
+
+    let pairs: { primary: string; secondary: string }[] = []
+    if (campaign_pairs && campaign_pairs.length > 0) {
+      pairs = campaign_pairs
+    } else if (campaign_prefix) {
+      const prefixEscaped = campaign_prefix.replace(/'/g, "\\'")
+      const campRows = await client().query<{ campaign: { name: string } }>(`
+        SELECT campaign.name
+        FROM campaign
+        WHERE campaign.name LIKE '${prefixEscaped}%'
+          AND campaign.status = 'ENABLED'
+        ORDER BY campaign.name
+      `)
+      const names = campRows.map(r => r.campaign.name)
+      const primaryNames = names.filter(n => !n.endsWith('_Secondary'))
+      for (const p of primaryNames) {
+        const s = `${p}_Secondary`
+        if (names.includes(s)) pairs.push({ primary: p, secondary: s })
+      }
+    } else {
+      throw new Error('Either campaign_prefix or campaign_pairs is required')
+    }
+
+    if (pairs.length === 0) {
+      return { pairs: [], message: 'No campaign pairs found matching the criteria.' }
+    }
+
+    const allNames = pairs.flatMap(p => [p.primary, p.secondary])
+    const inClause = allNames.map(n => `'${n.replace(/'/g, "\\'")}'`).join(', ')
+
+    // Keywords & negatives
+    const kwRows = await client().query<{
+      campaign: { name: string }
+      adGroup: { name: string }
+      adGroupCriterion: { keyword: { text: string; matchType: string }; negative: boolean }
+    }>(`
+      SELECT campaign.name, ad_group.name,
+             ad_group_criterion.keyword.text, ad_group_criterion.keyword.match_type,
+             ad_group_criterion.negative
+      FROM ad_group_criterion
+      WHERE campaign.name IN (${inClause})
+        AND ad_group_criterion.type = 'KEYWORD'
+        AND campaign.status = 'ENABLED'
+        AND ad_group.status = 'ENABLED'
+        AND ad_group_criterion.status = 'ENABLED'
+    `)
+
+    const keywords = new Map<string, Set<string>>()
+    const negatives = new Map<string, Set<string>>()
+    const kwDetails = new Map<string, Map<string, { matchType: string; adGroup: string }>>()
+
+    for (const r of kwRows) {
+      const camp = r.campaign.name
+      const text = r.adGroupCriterion.keyword.text.toLowerCase().trim()
+      const match = r.adGroupCriterion.keyword.matchType
+      const isNeg = r.adGroupCriterion.negative
+      if (isNeg) {
+        if (!negatives.has(camp)) negatives.set(camp, new Set())
+        negatives.get(camp)!.add(text)
+      } else {
+        if (!keywords.has(camp)) keywords.set(camp, new Set())
+        keywords.get(camp)!.add(text)
+        if (!kwDetails.has(camp)) kwDetails.set(camp, new Map())
+        kwDetails.get(camp)!.set(text, { matchType: match, adGroup: r.adGroup.name })
+      }
+    }
+
+    // Search terms
+    const stRows = await client().query<{
+      campaign: { name: string }
+      searchTermView: { searchTerm: string }
+      metrics: { costMicros: string; clicks: string; conversions: string }
+    }>(`
+      SELECT campaign.name, search_term_view.search_term,
+             metrics.cost_micros, metrics.clicks, metrics.conversions
+      FROM search_term_view
+      WHERE campaign.name IN (${inClause})
+        AND segments.date BETWEEN '${isoDate(start)}' AND '${isoDate(end)}'
+    `)
+
+    const searchTerms = new Map<string, Map<string, { spend: number; clicks: number; conv: number }>>()
+    for (const r of stRows) {
+      const camp = r.campaign.name
+      const term = r.searchTermView.searchTerm.toLowerCase().trim()
+      if (!searchTerms.has(camp)) searchTerms.set(camp, new Map())
+      const ex = searchTerms.get(camp)!.get(term) ?? { spend: 0, clicks: 0, conv: 0 }
+      ex.spend += Number(r.metrics.costMicros) / 1_000_000
+      ex.clicks += Number(r.metrics.clicks)
+      ex.conv += Number(r.metrics.conversions)
+      searchTerms.get(camp)!.set(term, ex)
+    }
+
+    // Performance
+    const perfRows = await client().query<{
+      campaign: { name: string }
+      metrics: { costMicros: string; clicks: string; conversions: string }
+    }>(`
+      SELECT campaign.name, metrics.cost_micros, metrics.clicks, metrics.conversions
+      FROM campaign
+      WHERE campaign.name IN (${inClause})
+        AND segments.date BETWEEN '${isoDate(start)}' AND '${isoDate(end)}'
+    `)
+
+    const perf = new Map<string, { spend: number; clicks: number; conv: number }>()
+    for (const r of perfRows) {
+      perf.set(r.campaign.name, {
+        spend: Number(r.metrics.costMicros) / 1_000_000,
+        clicks: Number(r.metrics.clicks),
+        conv: Number(r.metrics.conversions),
+      })
+    }
+
+    const results = pairs.map(({ primary, secondary }) => {
+      const pKws = keywords.get(primary) ?? new Set<string>()
+      const sKws = keywords.get(secondary) ?? new Set<string>()
+      const pNegs = negatives.get(primary) ?? new Set<string>()
+      const sNegs = negatives.get(secondary) ?? new Set<string>()
+      const pPerf = perf.get(primary) ?? { spend: 0, clicks: 0, conv: 0 }
+      const sPerf = perf.get(secondary) ?? { spend: 0, clicks: 0, conv: 0 }
+
+      const overlap = [...pKws].filter(k => sKws.has(k)).map(k => {
+        const pd = kwDetails.get(primary)?.get(k)
+        const sd = kwDetails.get(secondary)?.get(k)
+        return { keyword: k, primary_match_type: pd?.matchType, secondary_match_type: sd?.matchType }
+      })
+
+      const pBlockedByS = [...pKws].filter(k => sNegs.has(k))
+      const sBlockedByP = [...sKws].filter(k => pNegs.has(k))
+
+      const pTerms = searchTerms.get(primary) ?? new Map<string, { spend: number; clicks: number; conv: number }>()
+      const sTerms = searchTerms.get(secondary) ?? new Map<string, { spend: number; clicks: number; conv: number }>()
+      const sharedTerms = [...pTerms.keys()]
+        .filter(t => sTerms.has(t))
+        .map(t => ({
+          term: t,
+          primary_spend: Math.round(pTerms.get(t)!.spend * 100) / 100,
+          secondary_spend: Math.round(sTerms.get(t)!.spend * 100) / 100,
+          total_spend: Math.round((pTerms.get(t)!.spend + sTerms.get(t)!.spend) * 100) / 100,
+          primary_clicks: pTerms.get(t)!.clicks,
+          secondary_clicks: sTerms.get(t)!.clicks,
+        }))
+        .sort((a, b) => b.total_spend - a.total_spend)
+
+      return {
+        primary,
+        secondary,
+        primary_metrics: {
+          spend: Math.round(pPerf.spend * 100) / 100,
+          clicks: pPerf.clicks,
+          conversions: pPerf.conv,
+          keyword_count: pKws.size,
+          negative_count: pNegs.size,
+        },
+        secondary_metrics: {
+          spend: Math.round(sPerf.spend * 100) / 100,
+          clicks: sPerf.clicks,
+          conversions: sPerf.conv,
+          keyword_count: sKws.size,
+          negative_count: sNegs.size,
+        },
+        keyword_overlap: overlap,
+        primary_keywords_blocked_by_secondary: pBlockedByS,
+        secondary_keywords_blocked_by_primary: sBlockedByP,
+        search_term_overlap: {
+          shared_term_count: sharedTerms.length,
+          top_shared_terms: sharedTerms.slice(0, 20),
+        },
+      }
+    })
+
+    return {
+      pairs: results,
+      date_range: { since: isoDate(start), until: isoDate(end), days },
+    }
+  },
+}
+
 export const GOOGLE_ADS_TOOLS = [
   gads_list_campaigns,
   gads_insights,
   gads_search_terms,
   gads_list_negatives,
   gads_add_negative,
+  gads_campaign_overlap,
 ] as const
