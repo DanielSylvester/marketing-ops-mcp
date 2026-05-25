@@ -55,6 +55,17 @@ export class GoogleAdsClient {
     return data.results ?? []
   }
 
+  async searchFields(gaql: string): Promise<Record<string, unknown>[]> {
+    const res = await fetch(`${BASE_URL}/customers/${this.config.customerId}/googleAdsFields:search`, {
+      method: 'POST',
+      headers: await this.headers(),
+      body: JSON.stringify({ query: gaql }),
+    })
+    if (!res.ok) throw new Error(`Google Ads Fields API ${res.status}: ${await res.text()}`)
+    const data = await res.json() as { results?: Record<string, unknown>[] }
+    return data.results ?? []
+  }
+
   async mutate(operations: unknown[]): Promise<unknown> {
     const res = await fetch(`${BASE_URL}/customers/${this.config.customerId}/googleAds:mutate`, {
       method: 'POST',

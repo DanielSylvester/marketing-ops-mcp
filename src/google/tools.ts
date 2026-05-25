@@ -154,6 +154,72 @@ export const gads_list_keywords = {
 }
 
 // ---------------------------------------------------------------------------
+// gads_get_resource_metadata
+// ---------------------------------------------------------------------------
+
+export const gads_get_resource_metadata = {
+  name: 'gads_get_resource_metadata',
+  description: "[READ] Returns the real selectable, filterable and sortable fields for a Google Ads resource (for example 'campaign' or 'ad_group'), plus the metrics and segments that can be queried alongside it. Use this before writing a gads_gaql_search query and build the query only from the fields it returns. Do not guess field names.",
+  inputSchema: z.object({
+    resource_name: z.string().describe("A Google Ads resource, e.g. 'campaign', 'ad_group', 'keyword_view'."),
+  }),
+  async handler({ resource_name }: { resource_name: string }) {
+    const resource = resource_name.trim().toLowerCase()
+    const c = client()
+
+    // Resource node: category, compatible metrics/segments
+    const nodeRows = await c.searchFields(
+      `SELECT name, category, metrics, segments, attribute_resources WHERE name = '${resource}'`
+    )
+    const node = nodeRows[0] as
+      | { category?: string; metrics?: string[]; segments?: string[]; attributeResources?: string[] }
+      | undefined
+    if (!node || node.category !== 'RESOURCE') {
+      throw new Error(`'${resource}' is not a queryable Google Ads resource`)
+    }
+
+    // Attribute fields with capability flags
+    const fieldRows = await c.searchFields(
+      `SELECT name, selectable, filterable, sortable, data_type, is_repeated WHERE name LIKE '${resource}.%' AND category = 'ATTRIBUTE'`
+    )
+
+    const selectable: string[] = []
+    const filterable: string[] = []
+    const sortable: string[] = []
+    const fields: Record<string, unknown>[] = []
+
+    for (const r of fieldRows) {
+      const f = r as { name?: string; selectable?: boolean; filterable?: boolean; sortable?: boolean; dataType?: string; isRepeated?: boolean }
+      if (f.name) {
+        if (f.selectable) selectable.push(f.name)
+        if (f.filterable) filterable.push(f.name)
+        if (f.sortable) sortable.push(f.name)
+        fields.push({
+          name: f.name,
+          data_type: f.dataType,
+          is_repeated: f.isRepeated,
+          selectable: f.selectable,
+          filterable: f.filterable,
+          sortable: f.sortable,
+        })
+      }
+    }
+
+    return {
+      resource,
+      category: node.category,
+      compatible_metrics: node.metrics ?? [],
+      compatible_segments: node.segments ?? [],
+      attribute_resources: node.attributeResources ?? [],
+      selectable_count: selectable.length,
+      filterable_count: filterable.length,
+      sortable_count: sortable.length,
+      fields: fields.slice(0, 200), // cap to avoid huge responses
+    }
+  },
+}
+
+// ---------------------------------------------------------------------------
 // gads_list_campaigns
 // ---------------------------------------------------------------------------
 
@@ -591,6 +657,7 @@ export const gads_campaign_overlap = {
 }
 
 export const GOOGLE_ADS_TOOLS = [
+  gads_get_resource_metadata,
   gads_gaql_search,
   gads_list_campaigns,
   gads_list_ad_groups,

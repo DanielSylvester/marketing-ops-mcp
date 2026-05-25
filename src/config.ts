@@ -91,10 +91,16 @@ function buildMetaAccount(brand: Brand): MetaAccountConfig {
   }
 
   const accountId = envOptional(`${prefix}_ACCOUNT_ID`) ?? (legacyAccountKey ? envOptional(legacyAccountKey) : undefined) ?? ''
-  const currency = envWithFallback(`${prefix}_CURRENCY`, 'INR').toUpperCase()
-  const timezone = envWithFallback(`${prefix}_TIMEZONE`, 'Asia/Kolkata')
-  const campaignPrefix = envWithFallback(`${prefix}_PREFIX`, brand.slice(0, 2).toUpperCase() + '_')
-  const name = envWithFallback(`${prefix}_NAME`, brand)
+  // Defaults that match the legacy hardcoded config for backward compatibility
+  const defaultCurrency = brand === 'workstudio' ? 'SGD' : 'INR'
+  const defaultTimezone = brand === 'workstudio' ? 'Asia/Singapore' : 'Asia/Kolkata'
+  const defaultPrefix = brand === 'smartworks' ? 'SW_' : brand === 'workstudio' ? 'WS_' : brand.slice(0, 2).toUpperCase() + '_'
+  const defaultName = brand === 'smartworks' ? 'Smartworks India' : brand === 'workstudio' ? 'Workstudio Singapore' : brand
+
+  const currency = envWithFallback(`${prefix}_CURRENCY`, defaultCurrency).toUpperCase()
+  const timezone = envWithFallback(`${prefix}_TIMEZONE`, defaultTimezone)
+  const campaignPrefix = envWithFallback(`${prefix}_PREFIX`, defaultPrefix)
+  const name = envWithFallback(`${prefix}_NAME`, defaultName)
 
   return {
     brand,

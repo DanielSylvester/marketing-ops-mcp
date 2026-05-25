@@ -1,7 +1,7 @@
 {
   "name": "marketing-ops-mcp",
   "version": "0.1.0",
-  "description": "MCP server for Meta Ads + Google Ads — read insights, audit creatives, manage negatives.",
+  "description": "MCP server for Meta Ads + Google Ads \u2014 read insights, audit creatives, manage negatives.",
   "type": "module",
   "bin": {
     "marketing-ops-mcp": "dist/index.js"
@@ -10,7 +10,8 @@
     "build": "tsc",
     "dev": "tsx src/index.ts",
     "start": "node dist/index.js",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "test": "node --test --import tsx --import ./tests/_setup.ts tests/*.test.ts"
   },
   "dependencies": {
     "@libsql/client": "^0.17.3",
