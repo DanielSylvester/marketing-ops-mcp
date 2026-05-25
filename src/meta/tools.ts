@@ -221,7 +221,7 @@ export const meta_list_ads = {
     const target = adset_id ?? campaign_id ?? c.accountId
     const data = await c.getPaginated<{ id: string; name: string; adset_id: string; creative?: { id: string }; effective_status: string }>(
       `/${target}/ads`,
-      { fields: 'id,name,adset_id,creative{effective_status},effective_status' },
+      { fields: 'id,name,adset_id,creative{id},effective_status' },
     )
     const filtered = data.filter(ad => {
       if (status && status !== 'ANY' && ad.effective_status !== status) return false
