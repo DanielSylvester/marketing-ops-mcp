@@ -15,6 +15,7 @@ import { zodToJsonSchema } from 'zod-to-json-schema'
 import { META_TOOLS } from './meta/tools.js'
 import { GOOGLE_ADS_TOOLS } from './google/tools.js'
 import { isGoogleAdsConfigured, listConfiguredMetaBrands } from './config.js'
+import { logAudit } from './audit.js'
 
 type ToolDef = {
   name: string
@@ -29,6 +30,12 @@ const ALL_TOOLS: ToolDef[] = [
 ]
 
 const TOOL_BY_NAME = new Map(ALL_TOOLS.map(t => [t.name, t]))
+
+/** Heuristic: tool names containing these substrings are mutations. */
+const MUTATION_PATTERNS = ['create_', 'update_', 'add_', 'pause_', 'resume_', 'delete_', 'upload_']
+function isMutationTool(name: string): boolean {
+  return MUTATION_PATTERNS.some(p => name.includes(p))
+}
 
 const server = new Server(
   { name: 'marketing-ops-mcp', version: '0.1.0' },
@@ -51,14 +58,45 @@ server.setRequestHandler(CallToolRequestSchema, async (req) => {
     return { content: [{ type: 'text', text: `Unknown tool: ${req.params.name}` }], isError: true }
   }
 
+  const start = Date.now()
+  const isMutation = isMutationTool(tool.name)
+  const args = tool.inputSchema.parse(req.params.arguments ?? {})
+  const dryRun = isMutation && (args.dry_run === true || args.dry_run !== false)
+
   try {
-    const args = tool.inputSchema.parse(req.params.arguments ?? {})
     const result = await tool.handler(args)
+    const duration = Date.now() - start
+
+    // Best-effort audit log (never blocks the tool call)
+    logAudit({
+      tool: tool.name,
+      brand: args.brand ?? null,
+      customerId: args.customer_id ?? args.campaign_id?.toString().slice(0, 10) ?? null,
+      args,
+      result,
+      isMutation,
+      isDryRun: dryRun,
+      durationMs: duration,
+    }).catch(() => { /* silently ignore audit failures */ })
+
     return {
       content: [{ type: 'text', text: JSON.stringify(result, null, 2) }],
     }
   } catch (err) {
+    const duration = Date.now() - start
     const msg = err instanceof Error ? err.message : String(err)
+
+    logAudit({
+      tool: tool.name,
+      brand: args.brand ?? null,
+      customerId: args.customer_id ?? args.campaign_id?.toString().slice(0, 10) ?? null,
+      args,
+      error: msg,
+      isMutation,
+      isDryRun: dryRun,
+      durationMs: duration,
+    }).catch(() => { /* silently ignore audit failures */ })
+
     return { content: [{ type: 'text', text: `Error: ${msg}` }], isError: true }
   }
 })

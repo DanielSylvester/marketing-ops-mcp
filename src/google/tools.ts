@@ -1,6 +1,7 @@
 import { z } from 'zod'
 import { GoogleAdsClient } from './client.js'
 import { getGoogleAdsConfig } from '../config.js'
+import { isDryRun, shouldExecute, dryRunResult } from '../safety.js'
 
 let _client: GoogleAdsClient | null = null
 function client(): GoogleAdsClient {
@@ -217,8 +218,25 @@ export const gads_add_negative = {
     campaign_id: z.string(),
     text: z.string().describe('The keyword to negate'),
     match_type: z.enum(['EXACT', 'PHRASE', 'BROAD']).default('PHRASE'),
+    dry_run: z.boolean().optional().default(true).describe('Default true. Pass false AND set MARKETING_OPS_MCP_EXECUTE=1 to actually apply.'),
   }),
-  async handler({ campaign_id, text, match_type }: { campaign_id: string; text: string; match_type: 'EXACT' | 'PHRASE' | 'BROAD' }) {
+  async handler({ campaign_id, text, match_type, dry_run }: { campaign_id: string; text: string; match_type: 'EXACT' | 'PHRASE' | 'BROAD'; dry_run?: boolean }) {
+    const preview = {
+      action: 'add_negative_keyword',
+      campaign_id,
+      text,
+      match_type,
+      negative: true,
+    }
+
+    if (isDryRun({ dry_run })) {
+      return dryRunResult(preview)
+    }
+    const gate = shouldExecute('gads_add_negative')
+    if (!gate.execute) {
+      return { applied: false, reason: gate.reason, preview }
+    }
+
     const c = client()
     const result = await c.mutate([
       {

@@ -3,6 +3,7 @@ import { mkdirSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { MetaClient } from './client.js'
 import { getMetaAccount, listConfiguredMetaBrands, type Brand } from '../config.js'
+import { isDryRun, shouldExecute, dryRunResult } from '../safety.js'
 
 const BrandSchema = z.enum(['smartworks', 'workstudio'])
 
@@ -277,8 +278,9 @@ export const meta_create_campaign = {
     daily_budget: z.number().optional().describe('In major currency units (INR or SGD). e.g. 5000 = ₹5000 or S$5000'),
     lifetime_budget: z.number().optional().describe('Alternative to daily_budget'),
     special_ad_categories: z.array(z.string()).optional().describe('e.g. ["HOUSING"], ["EMPLOYMENT"], ["CREDIT"] — required for regulated categories'),
+    dry_run: z.boolean().optional().default(true).describe('Default true. Pass false AND set MARKETING_OPS_MCP_EXECUTE=1 to actually create.'),
   }),
-  async handler(args: { brand: Brand; name: string; objective: string; status: 'ACTIVE' | 'PAUSED'; daily_budget?: number; lifetime_budget?: number; special_ad_categories?: string[] }) {
+  async handler(args: { brand: Brand; name: string; objective: string; status: 'ACTIVE' | 'PAUSED'; daily_budget?: number; lifetime_budget?: number; special_ad_categories?: string[]; dry_run?: boolean }) {
     const c = clientFor(args.brand)
     const body: Record<string, any> = {
       name: args.name,
@@ -288,6 +290,15 @@ export const meta_create_campaign = {
     if (args.daily_budget) body.daily_budget = budgetToMicro(args.daily_budget, c.currency)
     if (args.lifetime_budget) body.lifetime_budget = budgetToMicro(args.lifetime_budget, c.currency)
     if (args.special_ad_categories) body.special_ad_categories = JSON.stringify(args.special_ad_categories)
+
+    if (isDryRun(args)) {
+      return dryRunResult({ action: 'create_campaign', brand: args.brand, body })
+    }
+    const gate = shouldExecute('meta_create_campaign')
+    if (!gate.execute) {
+      return { applied: false, reason: gate.reason, preview: body }
+    }
+
     const res = await c.post<{ id: string }>(`/${c.accountId}/campaigns`, body)
     return { campaign_id: res.id, success: true, note: `Created in ${args.status} state. Review before activating.` }
   },
@@ -303,8 +314,9 @@ export const meta_update_campaign = {
     status: z.enum(['ACTIVE', 'PAUSED']).optional(),
     daily_budget: z.number().optional().describe('In major currency units'),
     lifetime_budget: z.number().optional().describe('In major currency units'),
+    dry_run: z.boolean().optional().default(true).describe('Default true. Pass false AND set MARKETING_OPS_MCP_EXECUTE=1 to actually update.'),
   }),
-  async handler(args: { brand: Brand; campaign_id: string; name?: string; status?: 'ACTIVE' | 'PAUSED'; daily_budget?: number; lifetime_budget?: number }) {
+  async handler(args: { brand: Brand; campaign_id: string; name?: string; status?: 'ACTIVE' | 'PAUSED'; daily_budget?: number; lifetime_budget?: number; dry_run?: boolean }) {
     const c = clientFor(args.brand)
     const body: Record<string, any> = {}
     if (args.name) body.name = args.name
@@ -312,6 +324,15 @@ export const meta_update_campaign = {
     if (args.daily_budget) body.daily_budget = budgetToMicro(args.daily_budget, c.currency)
     if (args.lifetime_budget) body.lifetime_budget = budgetToMicro(args.lifetime_budget, c.currency)
     if (Object.keys(body).length === 0) throw new Error('No fields provided to update')
+
+    if (isDryRun(args)) {
+      return dryRunResult({ action: 'update_campaign', campaign_id: args.campaign_id, changed_fields: Object.keys(body) })
+    }
+    const gate = shouldExecute('meta_update_campaign')
+    if (!gate.execute) {
+      return { applied: false, reason: gate.reason, preview: body }
+    }
+
     await c.post(`/${args.campaign_id}`, body)
     return { campaign_id: args.campaign_id, success: true, changed_fields: Object.keys(body) }
   },
@@ -329,8 +350,9 @@ export const meta_create_adset = {
     optimization_goal: z.string().default('LEAD_GENERATION').describe('e.g. LEAD_GENERATION, REACH, LINK_CLICKS, CONVERSATIONS'),
     targeting: z.record(z.any()).optional().describe('JSON targeting object. e.g. {"geo_locations":{"countries":["IN"]},"age_min":25}'),
     status: z.enum(['ACTIVE', 'PAUSED']).default('PAUSED'),
+    dry_run: z.boolean().optional().default(true).describe('Default true. Pass false AND set MARKETING_OPS_MCP_EXECUTE=1 to actually create.'),
   }),
-  async handler(args: { brand: Brand; campaign_id: string; name: string; daily_budget?: number; billing_event: string; optimization_goal: string; targeting?: Record<string, any>; status: 'ACTIVE' | 'PAUSED' }) {
+  async handler(args: { brand: Brand; campaign_id: string; name: string; daily_budget?: number; billing_event: string; optimization_goal: string; targeting?: Record<string, any>; status: 'ACTIVE' | 'PAUSED'; dry_run?: boolean }) {
     const c = clientFor(args.brand)
     const body: Record<string, any> = {
       name: args.name,
@@ -341,6 +363,15 @@ export const meta_create_adset = {
     }
     if (args.daily_budget) body.daily_budget = budgetToMicro(args.daily_budget, c.currency)
     if (args.targeting) body.targeting = JSON.stringify(args.targeting)
+
+    if (isDryRun(args)) {
+      return dryRunResult({ action: 'create_adset', brand: args.brand, body })
+    }
+    const gate = shouldExecute('meta_create_adset')
+    if (!gate.execute) {
+      return { applied: false, reason: gate.reason, preview: body }
+    }
+
     const res = await c.post<{ id: string }>(`/${c.accountId}/adsets`, body)
     return { adset_id: res.id, success: true, note: `Created in ${args.status} state. Review before activating.` }
   },
@@ -356,8 +387,9 @@ export const meta_update_adset = {
     status: z.enum(['ACTIVE', 'PAUSED']).optional(),
     daily_budget: z.number().optional().describe('In major currency units'),
     targeting: z.record(z.any()).optional().describe('JSON targeting object'),
+    dry_run: z.boolean().optional().default(true).describe('Default true. Pass false AND set MARKETING_OPS_MCP_EXECUTE=1 to actually update.'),
   }),
-  async handler(args: { brand: Brand; adset_id: string; name?: string; status?: 'ACTIVE' | 'PAUSED'; daily_budget?: number; targeting?: Record<string, any> }) {
+  async handler(args: { brand: Brand; adset_id: string; name?: string; status?: 'ACTIVE' | 'PAUSED'; daily_budget?: number; targeting?: Record<string, any>; dry_run?: boolean }) {
     const c = clientFor(args.brand)
     const body: Record<string, any> = {}
     if (args.name) body.name = args.name
@@ -365,6 +397,15 @@ export const meta_update_adset = {
     if (args.daily_budget) body.daily_budget = budgetToMicro(args.daily_budget, c.currency)
     if (args.targeting) body.targeting = JSON.stringify(args.targeting)
     if (Object.keys(body).length === 0) throw new Error('No fields provided to update')
+
+    if (isDryRun(args)) {
+      return dryRunResult({ action: 'update_adset', adset_id: args.adset_id, changed_fields: Object.keys(body) })
+    }
+    const gate = shouldExecute('meta_update_adset')
+    if (!gate.execute) {
+      return { applied: false, reason: gate.reason, preview: body }
+    }
+
     await c.post(`/${args.adset_id}`, body)
     return { adset_id: args.adset_id, success: true, changed_fields: Object.keys(body) }
   },
@@ -379,8 +420,9 @@ export const meta_create_ad = {
     name: z.string(),
     creative: z.record(z.any()).describe('JSON creative object. Minimum: {object_story_spec:{page_id:"...",link_data:{message:"...",link:"...",image_hash:"..."}}}'),
     status: z.enum(['ACTIVE', 'PAUSED']).default('PAUSED'),
+    dry_run: z.boolean().optional().default(true).describe('Default true. Pass false AND set MARKETING_OPS_MCP_EXECUTE=1 to actually create.'),
   }),
-  async handler(args: { brand: Brand; adset_id: string; name: string; creative: Record<string, any>; status: 'ACTIVE' | 'PAUSED' }) {
+  async handler(args: { brand: Brand; adset_id: string; name: string; creative: Record<string, any>; status: 'ACTIVE' | 'PAUSED'; dry_run?: boolean }) {
     const c = clientFor(args.brand)
     const body = {
       name: args.name,
@@ -388,6 +430,15 @@ export const meta_create_ad = {
       creative: JSON.stringify(args.creative),
       status: args.status,
     }
+
+    if (isDryRun(args)) {
+      return dryRunResult({ action: 'create_ad', brand: args.brand, body })
+    }
+    const gate = shouldExecute('meta_create_ad')
+    if (!gate.execute) {
+      return { applied: false, reason: gate.reason, preview: body }
+    }
+
     const res = await c.post<{ id: string }>(`/${c.accountId}/ads`, body)
     return { ad_id: res.id, success: true, note: `Created in ${args.status} state. Review before activating.` }
   },
@@ -402,14 +453,24 @@ export const meta_update_ad = {
     name: z.string().optional(),
     status: z.enum(['ACTIVE', 'PAUSED']).optional(),
     creative: z.record(z.any()).optional().describe('JSON creative object'),
+    dry_run: z.boolean().optional().default(true).describe('Default true. Pass false AND set MARKETING_OPS_MCP_EXECUTE=1 to actually update.'),
   }),
-  async handler(args: { brand: Brand; ad_id: string; name?: string; status?: 'ACTIVE' | 'PAUSED'; creative?: Record<string, any> }) {
+  async handler(args: { brand: Brand; ad_id: string; name?: string; status?: 'ACTIVE' | 'PAUSED'; creative?: Record<string, any>; dry_run?: boolean }) {
     const c = clientFor(args.brand)
     const body: Record<string, any> = {}
     if (args.name) body.name = args.name
     if (args.status) body.status = args.status
     if (args.creative) body.creative = JSON.stringify(args.creative)
     if (Object.keys(body).length === 0) throw new Error('No fields provided to update')
+
+    if (isDryRun(args)) {
+      return dryRunResult({ action: 'update_ad', ad_id: args.ad_id, changed_fields: Object.keys(body) })
+    }
+    const gate = shouldExecute('meta_update_ad')
+    if (!gate.execute) {
+      return { applied: false, reason: gate.reason, preview: body }
+    }
+
     await c.post(`/${args.ad_id}`, body)
     return { ad_id: args.ad_id, success: true, changed_fields: Object.keys(body) }
   },
