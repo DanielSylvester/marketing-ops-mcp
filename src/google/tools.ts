@@ -15,6 +15,145 @@ const DateRange = z.object({
 })
 
 // ---------------------------------------------------------------------------
+// gads_gaql_search — universal GAQL
+// ---------------------------------------------------------------------------
+
+export const gads_gaql_search = {
+  name: 'gads_gaql_search',
+  description: '[READ] Run any Google Ads Query Language (GAQL) query. Covers the entire Google Ads read surface: every resource, every metric, every segment. Returns up to max_rows (default 1000, hard cap 10000).',
+  inputSchema: z.object({
+    query: z.string().describe('GAQL query, e.g. SELECT campaign.id, campaign.name FROM campaign WHERE campaign.status = "ENABLED"'),
+    max_rows: z.number().optional().default(1000).describe('Max rows to return (default 1000, hard cap 10000)'),
+  }),
+  async handler({ query, max_rows }: { query: string; max_rows?: number }) {
+    const cap = Math.min(Math.max(1, Math.trunc(max_rows ?? 1000)), 10_000)
+    // Only append LIMIT if the query doesn't already have one
+    const finalQuery = /\bLIMIT\s+\d+\b/i.test(query)
+      ? query
+      : `${query.trim().replace(/;\s*$/, '')} LIMIT ${cap}`
+    const rows = await client().query<Record<string, unknown>>(finalQuery)
+    return { rows, row_count: rows.length, query: finalQuery }
+  },
+}
+
+// ---------------------------------------------------------------------------
+// gads_list_ad_groups
+// ---------------------------------------------------------------------------
+
+export const gads_list_ad_groups = {
+  name: 'gads_list_ad_groups',
+  description: '[READ] List ad groups. Optionally scoped to a specific campaign.',
+  inputSchema: z.object({
+    campaign_id: z.string().optional().describe('Filter to one campaign'),
+    status: z.enum(['ENABLED', 'PAUSED', 'REMOVED']).optional(),
+  }),
+  async handler({ campaign_id, status }: { campaign_id?: string; status?: 'ENABLED' | 'PAUSED' | 'REMOVED' }) {
+    const conds: string[] = []
+    if (campaign_id) conds.push(`campaign.id = ${campaign_id}`)
+    if (status) conds.push(`ad_group.status = '${status}'`)
+    const where = conds.length ? `WHERE ${conds.join(' AND ')}` : ''
+
+    const rows = await client().query<{
+      adGroup: { id: string; name: string; status: string; type: string; cpcBidMicros: string }
+      campaign: { id: string; name: string }
+    }>(`
+      SELECT ad_group.id, ad_group.name, ad_group.status, ad_group.type, ad_group.cpc_bid_micros,
+             campaign.id, campaign.name
+      FROM ad_group
+      ${where}
+      ORDER BY campaign.name, ad_group.name
+    `)
+
+    return {
+      ad_groups: rows.map(r => ({
+        id: r.adGroup.id,
+        name: r.adGroup.name,
+        status: r.adGroup.status,
+        type: r.adGroup.type,
+        cpc_bid: Number(r.adGroup.cpcBidMicros) / 1_000_000,
+        campaign_id: r.campaign.id,
+        campaign_name: r.campaign.name,
+      })),
+      count: rows.length,
+    }
+  },
+}
+
+// ---------------------------------------------------------------------------
+// gads_list_keywords
+// ---------------------------------------------------------------------------
+
+export const gads_list_keywords = {
+  name: 'gads_list_keywords',
+  description: '[READ] List keywords with match type and negative flag. Use enabled_only_at_every_level=true to filter to truly active keywords (campaign + ad group + keyword all ENABLED).',
+  inputSchema: z.object({
+    campaign_id: z.string().optional(),
+    ad_group_id: z.string().optional(),
+    status: z.enum(['ENABLED', 'PAUSED', 'REMOVED']).optional(),
+    match_type: z.enum(['EXACT', 'PHRASE', 'BROAD']).optional(),
+    negatives_only: z.boolean().optional().describe('Show only negative keywords'),
+    enabled_only_at_every_level: z.boolean().optional().describe('Require campaign + ad group + keyword all ENABLED'),
+  }),
+  async handler({ campaign_id, ad_group_id, status, match_type, negatives_only, enabled_only_at_every_level }: {
+    campaign_id?: string
+    ad_group_id?: string
+    status?: 'ENABLED' | 'PAUSED' | 'REMOVED'
+    match_type?: 'EXACT' | 'PHRASE' | 'BROAD'
+    negatives_only?: boolean
+    enabled_only_at_every_level?: boolean
+  }) {
+    const conds: string[] = [`ad_group_criterion.type = 'KEYWORD'`]
+    if (campaign_id) conds.push(`campaign.id = ${campaign_id}`)
+    if (ad_group_id) conds.push(`ad_group.id = ${ad_group_id}`)
+    if (status) conds.push(`ad_group_criterion.status = '${status}'`)
+    if (match_type) conds.push(`ad_group_criterion.keyword.match_type = '${match_type}'`)
+    if (typeof negatives_only === 'boolean') conds.push(`ad_group_criterion.negative = ${negatives_only ? 'TRUE' : 'FALSE'}`)
+    if (enabled_only_at_every_level) {
+      conds.push(`campaign.status = 'ENABLED'`)
+      conds.push(`ad_group.status = 'ENABLED'`)
+      conds.push(`ad_group_criterion.status = 'ENABLED'`)
+    }
+
+    const rows = await client().query<{
+      adGroupCriterion: {
+        criterionId: string
+        keyword: { text: string; matchType: string }
+        status: string
+        negative: boolean
+      }
+      adGroup: { id: string; name: string }
+      campaign: { id: string; name: string }
+    }>(`
+      SELECT ad_group_criterion.criterion_id,
+             ad_group_criterion.keyword.text,
+             ad_group_criterion.keyword.match_type,
+             ad_group_criterion.status,
+             ad_group_criterion.negative,
+             ad_group.id, ad_group.name,
+             campaign.id, campaign.name
+      FROM keyword_view
+      WHERE ${conds.join(' AND ')}
+      ORDER BY campaign.name, ad_group.name, ad_group_criterion.keyword.text
+    `)
+
+    return {
+      keywords: rows.map(r => ({
+        criterion_id: r.adGroupCriterion.criterionId,
+        text: r.adGroupCriterion.keyword.text,
+        match_type: r.adGroupCriterion.keyword.matchType,
+        status: r.adGroupCriterion.status,
+        negative: r.adGroupCriterion.negative,
+        ad_group_id: r.adGroup.id,
+        ad_group_name: r.adGroup.name,
+        campaign_id: r.campaign.id,
+        campaign_name: r.campaign.name,
+      })),
+      count: rows.length,
+    }
+  },
+}
+
+// ---------------------------------------------------------------------------
 // gads_list_campaigns
 // ---------------------------------------------------------------------------
 
@@ -452,7 +591,10 @@ export const gads_campaign_overlap = {
 }
 
 export const GOOGLE_ADS_TOOLS = [
+  gads_gaql_search,
   gads_list_campaigns,
+  gads_list_ad_groups,
+  gads_list_keywords,
   gads_insights,
   gads_search_terms,
   gads_list_negatives,

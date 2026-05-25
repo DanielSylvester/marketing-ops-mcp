@@ -5,7 +5,10 @@ import { MetaClient } from './client.js'
 import { getMetaAccount, listConfiguredMetaBrands, type Brand } from '../config.js'
 import { isDryRun, shouldExecute, dryRunResult } from '../safety.js'
 
-const BrandSchema = z.enum(['smartworks', 'workstudio'])
+const BrandSchema = z.string().refine(
+  (val) => listConfiguredMetaBrands().includes(val),
+  (val) => ({ message: `Unknown brand: '${val}'. Configured brands: ${listConfiguredMetaBrands().join(', ') || 'none'}` })
+)
 
 function clientFor(brand: Brand): MetaClient {
   return new MetaClient(getMetaAccount(brand))
