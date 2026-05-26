@@ -147,3 +147,9 @@ export function getGoogleAdsConfig(): GoogleAdsConfig {
 export function isGoogleAdsConfigured(): boolean {
   return !!(envOptional('GOOGLE_ADS_CLIENT_ID') && envOptional('GOOGLE_ADS_REFRESH_TOKEN'))
 }
+
+// ---------------------------------------------------------------------------
+// LinkedIn config passthrough
+// ---------------------------------------------------------------------------
+
+export { isLinkedInConfigured } from './linkedin/config.js'

@@ -14,7 +14,8 @@ import { CallToolRequestSchema, ListToolsRequestSchema, ListResourcesRequestSche
 import { zodToJsonSchema } from 'zod-to-json-schema'
 import { META_TOOLS } from './meta/tools.js'
 import { GOOGLE_ADS_TOOLS } from './google/tools.js'
-import { isGoogleAdsConfigured, listConfiguredMetaBrands } from './config.js'
+import { LINKEDIN_TOOLS } from './linkedin/tools.js'
+import { isGoogleAdsConfigured, isLinkedInConfigured, listConfiguredMetaBrands } from './config.js'
 import { logAudit, queryAudit } from './audit.js'
 
 type ToolDef = {
@@ -27,6 +28,7 @@ type ToolDef = {
 const ALL_TOOLS: ToolDef[] = [
   ...META_TOOLS as unknown as ToolDef[],
   ...GOOGLE_ADS_TOOLS as unknown as ToolDef[],
+  ...LINKEDIN_TOOLS as unknown as ToolDef[],
 ]
 
 const TOOL_BY_NAME = new Map(ALL_TOOLS.map(t => [t.name, t]))
@@ -172,8 +174,9 @@ async function main() {
   // Stderr only — stdout is reserved for MCP protocol.
   const meta = listConfiguredMetaBrands()
   const gads = isGoogleAdsConfigured() ? 'configured' : 'not configured'
+  const linkedin = isLinkedInConfigured() ? 'configured' : 'not configured'
   const turso = process.env.TURSO_DATABASE_URL ? 'connected' : 'not configured'
-  console.error(`[marketing-ops-mcp] up. Meta: ${meta.join(', ') || 'none'}. GAds: ${gads}. Turso: ${turso}.`)
+  console.error(`[marketing-ops-mcp] up. Meta: ${meta.join(', ') || 'none'}. GAds: ${gads}. LinkedIn: ${linkedin}. Turso: ${turso}.`)
 }
 
 main().catch(err => {
