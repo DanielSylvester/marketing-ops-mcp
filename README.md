@@ -7,7 +7,7 @@ Each user runs it locally with their own tokens. There is no hosted server.
 ## Tools
 
 ### Meta Ads
-- `meta_list_accounts` — show configured ad accounts (Smartworks, Workstudio)
+- `meta_list_accounts` — show configured Meta ad accounts with brand metadata
 - `meta_list_campaigns` — list campaigns; filter by status or objective
 - `meta_insights` — spend / impressions / clicks / leads at account, campaign, adset, or ad level
 - `meta_get_creative` — full creative spec (image hashes, copy variants, CTAs, lead form ID)
@@ -18,6 +18,8 @@ Each user runs it locally with their own tokens. There is no hosted server.
 - `gads_insights` — campaign or keyword performance for a date range
 - `gads_search_terms` — what users actually typed; filter by spend
 - `gads_list_negatives` — campaign-level negative keywords
+- `gads_campaign_overlap` — keyword/negative overlap + search-term cannibalization between primary and _Secondary campaigns
+- `gads_search_term_pattern_analysis` — clusters search terms by linguistic patterns, flags waste, suggests negatives with projected savings
 - `gads_add_negative` — **MUTATION** — add a campaign-level negative keyword
 - `gads_add_negative_keyword` — **MUTATION** — add an ad group-level negative keyword
 - `gads_pause_campaign` — **MUTATION** — pause a campaign (dry-run by default)
@@ -59,8 +61,11 @@ Add to `~/.claude/settings.json`:
       "command": "node",
       "args": ["/absolute/path/to/marketing-ops-mcp/dist/index.js"],
       "env": {
-        "META_SMARTWORKS_TOKEN": "...",
-        "META_WORKSTUDIO_TOKEN": "...",
+        "META_BRANDS": "brand-a,brand-b",
+        "META_BRAND_A_TOKEN": "...",
+        "META_BRAND_A_ACCOUNT_ID": "act_...",
+        "META_BRAND_B_TOKEN": "...",
+        "META_BRAND_B_ACCOUNT_ID": "act_...",
         "GOOGLE_ADS_CLIENT_ID": "...",
         "GOOGLE_ADS_CLIENT_SECRET": "...",
         "GOOGLE_ADS_REFRESH_TOKEN": "...",

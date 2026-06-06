@@ -49,10 +49,6 @@ function envOptional(key: string): string | undefined {
   return process.env[key] || undefined
 }
 
-function envWithFallback(key: string, fallback: string): string {
-  return process.env[key]?.trim() || fallback
-}
-
 export const META_API_VERSION = process.env['META_API_VERSION'] ?? 'v25.0'
 export const META_BASE_URL = `https://graph.facebook.com/${META_API_VERSION}`
 
@@ -61,46 +57,26 @@ export const META_BASE_URL = `https://graph.facebook.com/${META_API_VERSION}`
 // ---------------------------------------------------------------------------
 
 function discoverBrands(): Brand[] {
-  // Explicit list takes precedence
   const explicit = envOptional('META_BRANDS')
-  if (explicit) {
-    return explicit.split(',').map(b => b.trim().toLowerCase()).filter(Boolean)
+  if (!explicit) {
+    throw new Error('META_BRANDS is required. Set as comma-separated list, e.g. META_BRANDS=brand-a,brand-b')
   }
-
-  // Fallback: auto-discover from legacy env var names
-  const brands: Brand[] = []
-  if (envOptional('META_SMARTWORKS_TOKEN')) brands.push('smartworks')
-  if (envOptional('META_WORKSTUDIO_TOKEN')) brands.push('workstudio')
-  return brands
+  return explicit.split(',').map(b => b.trim().toLowerCase()).filter(Boolean)
 }
 
 function buildMetaAccount(brand: Brand): MetaAccountConfig {
   const prefix = `META_${brand.toUpperCase()}`
 
-  // Legacy fallback keys for smartworks / workstudio
-  const legacyTokenKey = brand === 'smartworks' ? 'META_SMARTWORKS_TOKEN'
-    : brand === 'workstudio' ? 'META_WORKSTUDIO_TOKEN'
-    : undefined
-  const legacyAccountKey = brand === 'smartworks' ? 'META_SMARTWORKS_ACCOUNT_ID'
-    : brand === 'workstudio' ? 'META_WORKSTUDIO_ACCOUNT_ID'
-    : undefined
-
-  const token = envOptional(`${prefix}_TOKEN`) ?? (legacyTokenKey ? envOptional(legacyTokenKey) : undefined)
+  const token = envOptional(`${prefix}_TOKEN`)
   if (!token) {
-    throw new Error(`Missing token for brand '${brand}'. Set ${prefix}_TOKEN (or legacy ${legacyTokenKey}).`)
+    throw new Error(`Missing token for brand '${brand}'. Set ${prefix}_TOKEN.`)
   }
 
-  const accountId = envOptional(`${prefix}_ACCOUNT_ID`) ?? (legacyAccountKey ? envOptional(legacyAccountKey) : undefined) ?? ''
-  // Defaults that match the legacy hardcoded config for backward compatibility
-  const defaultCurrency = brand === 'workstudio' ? 'SGD' : 'INR'
-  const defaultTimezone = brand === 'workstudio' ? 'Asia/Singapore' : 'Asia/Kolkata'
-  const defaultPrefix = brand === 'smartworks' ? 'SW_' : brand === 'workstudio' ? 'WS_' : brand.slice(0, 2).toUpperCase() + '_'
-  const defaultName = brand === 'smartworks' ? 'Smartworks India' : brand === 'workstudio' ? 'Workstudio Singapore' : brand
-
-  const currency = envWithFallback(`${prefix}_CURRENCY`, defaultCurrency).toUpperCase()
-  const timezone = envWithFallback(`${prefix}_TIMEZONE`, defaultTimezone)
-  const campaignPrefix = envWithFallback(`${prefix}_PREFIX`, defaultPrefix)
-  const name = envWithFallback(`${prefix}_NAME`, defaultName)
+  const accountId = envOptional(`${prefix}_ACCOUNT_ID`) ?? ''
+  const currency = (envOptional(`${prefix}_CURRENCY`) ?? 'INR').toUpperCase()
+  const timezone = envOptional(`${prefix}_TIMEZONE`) ?? 'UTC'
+  const campaignPrefix = envOptional(`${prefix}_PREFIX`) ?? ''
+  const name = envOptional(`${prefix}_NAME`) ?? brand
 
   return {
     brand,

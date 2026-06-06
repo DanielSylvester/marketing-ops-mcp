@@ -103,6 +103,7 @@ export const gads_list_keywords = {
     match_type: z.enum(["EXACT", "PHRASE", "BROAD"]).optional(),
     negatives_only: z.boolean().optional().describe("Show only negative keywords"),
     enabled_only_at_every_level: z.boolean().optional().describe("Require campaign + ad group + keyword all ENABLED"),
+    customer_id: z.string().optional().describe("10-digit customer ID (no dashes). Falls back to GOOGLE_ADS_CUSTOMER_ID."),
   }),
   async handler({
     campaign_id,
@@ -111,6 +112,7 @@ export const gads_list_keywords = {
     match_type,
     negatives_only,
     enabled_only_at_every_level,
+    customer_id,
   }: {
     campaign_id?: string;
     ad_group_id?: string;
@@ -118,7 +120,9 @@ export const gads_list_keywords = {
     match_type?: "EXACT" | "PHRASE" | "BROAD";
     negatives_only?: boolean;
     enabled_only_at_every_level?: boolean;
+    customer_id?: string;
   }) {
+    const c = getClient(customer_id);
     const conds: string[] = [`ad_group_criterion.type = 'KEYWORD'`];
     if (campaign_id) conds.push(`campaign.id = ${campaign_id}`);
     if (ad_group_id) conds.push(`ad_group.id = ${ad_group_id}`);
@@ -132,7 +136,7 @@ export const gads_list_keywords = {
       conds.push(`ad_group_criterion.status = 'ENABLED'`);
     }
 
-    const rows = await client().query<{
+    const rows = await c.query<{
       adGroupCriterion: {
         criterionId: string;
         keyword: { text: string; matchType: string };
@@ -167,6 +171,7 @@ export const gads_list_keywords = {
         campaign_name: r.campaign.name,
       })),
       count: rows.length,
+      customer_id: c.customerId,
     };
   },
 };
@@ -251,30 +256,70 @@ export const gads_get_resource_metadata = {
 
 export const gads_list_campaigns = {
   name: "gads_list_campaigns",
-  description: 'List Google Ads campaigns. Optionally filter by status or name prefix (e.g. "SW_" for Smartworks).',
+  description: 'List Google Ads campaigns. Optionally filter by status or name prefix (e.g. "Brand_" for brand campaigns).',
   inputSchema: z.object({
     status: z.enum(["ENABLED", "PAUSED", "REMOVED", "ANY"]).optional().default("ANY"),
     prefix: z.string().optional().describe('Match campaign.name LIKE "<prefix>%"'),
+    channel_type: z.string().optional().describe('SEARCH, DISPLAY, VIDEO, SHOPPING, etc.'),
+    date_range_days: z.number().optional().default(30).describe("Metrics window in days (default 30)"),
+    customer_id: z.string().optional().describe("10-digit customer ID (no dashes). Falls back to GOOGLE_ADS_CUSTOMER_ID."),
   }),
-  async handler({ status, prefix }: { status?: "ENABLED" | "PAUSED" | "REMOVED" | "ANY"; prefix?: string }) {
+  async handler({
+    status,
+    prefix,
+    channel_type,
+    date_range_days,
+    customer_id,
+  }: {
+    status?: "ENABLED" | "PAUSED" | "REMOVED" | "ANY";
+    prefix?: string;
+    channel_type?: string;
+    date_range_days?: number;
+    customer_id?: string;
+  }) {
+    const c = getClient(customer_id);
     const wheres: string[] = [];
     if (status && status !== "ANY") wheres.push(`campaign.status = '${status}'`);
     else wheres.push(`campaign.status != 'REMOVED'`);
     if (prefix) wheres.push(`campaign.name LIKE '${prefix.replace(/'/g, "\\'")}%'`);
+    if (channel_type) wheres.push(`campaign.advertising_channel_type = '${channel_type}'`);
+
+    const days = date_range_days ?? 30;
+    const end = new Date();
+    const start = new Date(end.getTime() - (Math.max(1, days) - 1) * 86_400_000);
+    const isoDate = (d: Date) => d.toISOString().slice(0, 10);
+    wheres.push(`segments.date BETWEEN '${isoDate(start)}' AND '${isoDate(end)}'`);
+
     const whereClause = wheres.length ? `WHERE ${wheres.join(" AND ")}` : "";
 
-    const rows = await client().query<{
-      campaign: { id: string; name: string; status: string; servingStatus: string; biddingStrategyType: string };
+    const rows = await c.query<{
+      campaign: { id: string; name: string; status: string; advertisingChannelType: string; biddingStrategyType: string };
+      campaignBudget: { amountMicros: string };
+      metrics: { impressions: string; clicks: string; costMicros: string; conversions: string };
     }>(`
-      SELECT campaign.id, campaign.name, campaign.status, campaign.serving_status, campaign.bidding_strategy_type
+      SELECT campaign.id, campaign.name, campaign.status, campaign.advertising_channel_type, campaign.bidding_strategy_type,
+             campaign_budget.amount_micros,
+             metrics.impressions, metrics.clicks, metrics.cost_micros, metrics.conversions
       FROM campaign
       ${whereClause}
-      ORDER BY campaign.name
+      ORDER BY metrics.cost_micros DESC
     `);
 
     return {
-      campaigns: rows.map((r) => r.campaign),
+      campaigns: rows.map((r) => ({
+        id: r.campaign.id,
+        name: r.campaign.name,
+        status: r.campaign.status,
+        channel_type: r.campaign.advertisingChannelType,
+        bidding_strategy_type: r.campaign.biddingStrategyType,
+        budget: Number(r.campaignBudget?.amountMicros ?? 0) / 1_000_000,
+        impressions: Number(r.metrics?.impressions ?? 0),
+        clicks: Number(r.metrics?.clicks ?? 0),
+        spend: Number(r.metrics?.costMicros ?? 0) / 1_000_000,
+        conversions: Number(r.metrics?.conversions ?? 0),
+      })),
       count: rows.length,
+      customer_id: c.customerId,
     };
   },
 };
@@ -652,16 +697,20 @@ export const gads_campaign_overlap = {
       .optional()
       .default(7)
       .describe("Days back for search-term and performance overlap (max 90)"),
+    customer_id: z.string().optional().describe("10-digit customer ID (no dashes). Falls back to GOOGLE_ADS_CUSTOMER_ID."),
   }),
   async handler({
     campaign_prefix,
     campaign_pairs,
     date_range_days,
+    customer_id,
   }: {
     campaign_prefix?: string;
     campaign_pairs?: { primary: string; secondary: string }[];
     date_range_days?: number;
+    customer_id?: string;
   }) {
+    const c = getClient(customer_id);
     const days = Math.max(1, Math.min(date_range_days ?? 7, 90));
     const end = new Date();
     const start = new Date(end.getTime() - (days - 1) * 86_400_000);
@@ -672,7 +721,7 @@ export const gads_campaign_overlap = {
       pairs = campaign_pairs;
     } else if (campaign_prefix) {
       const prefixEscaped = campaign_prefix.replace(/'/g, "\\'");
-      const campRows = await client().query<{ campaign: { name: string } }>(`
+      const campRows = await c.query<{ campaign: { name: string } }>(`
         SELECT campaign.name
         FROM campaign
         WHERE campaign.name LIKE '${prefixEscaped}%'
@@ -690,14 +739,14 @@ export const gads_campaign_overlap = {
     }
 
     if (pairs.length === 0) {
-      return { pairs: [], message: "No campaign pairs found matching the criteria." };
+      return { pairs: [], message: "No campaign pairs found matching the criteria.", customer_id: c.customerId };
     }
 
     const allNames = pairs.flatMap((p) => [p.primary, p.secondary]);
     const inClause = allNames.map((n) => `'${n.replace(/'/g, "\\'")}'`).join(", ");
 
     // Keywords & negatives
-    const kwRows = await client().query<{
+    const kwRows = await c.query<{
       campaign: { name: string };
       adGroup: { name: string };
       adGroupCriterion: { keyword: { text: string; matchType: string }; negative: boolean };
@@ -734,7 +783,7 @@ export const gads_campaign_overlap = {
     }
 
     // Search terms
-    const stRows = await client().query<{
+    const stRows = await c.query<{
       campaign: { name: string };
       searchTermView: { searchTerm: string };
       metrics: { costMicros: string; clicks: string; conversions: string };
@@ -759,7 +808,7 @@ export const gads_campaign_overlap = {
     }
 
     // Performance
-    const perfRows = await client().query<{
+    const perfRows = await c.query<{
       campaign: { name: string };
       metrics: { costMicros: string; clicks: string; conversions: string };
     }>(`
@@ -841,6 +890,158 @@ export const gads_campaign_overlap = {
     return {
       pairs: results,
       date_range: { since: isoDate(start), until: isoDate(end), days },
+      customer_id: c.customerId,
+    };
+  },
+};
+
+// ---------------------------------------------------------------------------
+// gads_search_term_pattern_analysis — Intelligence tool
+// ---------------------------------------------------------------------------
+
+interface PatternGroup {
+  pattern: string;
+  pattern_type: 'prefix' | 'word';
+  term_count: number;
+  total_spend: number;
+  total_clicks: number;
+  total_conversions: number;
+  terms: string[];
+  recommendation: string;
+  projected_savings_monthly: number;
+}
+
+function tokenize(term: string): string[] {
+  return term.toLowerCase().trim().split(/[^a-z0-9]+/).filter(Boolean);
+}
+
+function extractPatterns(terms: { term: string; spend: number; clicks: number; conversions: number }[]): Map<string, { type: 'prefix' | 'word'; terms: { term: string; spend: number; clicks: number; conversions: number }[] }> {
+  const patterns = new Map<string, { type: 'prefix' | 'word'; terms: { term: string; spend: number; clicks: number; conversions: number }[] }>();
+
+  for (const t of terms) {
+    const words = tokenize(t.term);
+    if (words.length === 0) continue;
+
+    const firstWord = words[0];
+    if (!patterns.has(firstWord)) patterns.set(firstWord, { type: 'prefix', terms: [] });
+    patterns.get(firstWord)!.terms.push(t);
+
+    if (words.length >= 2) {
+      const firstTwo = `${words[0]} ${words[1]}`;
+      if (!patterns.has(firstTwo)) patterns.set(firstTwo, { type: 'prefix', terms: [] });
+      patterns.get(firstTwo)!.terms.push(t);
+    }
+
+    for (const word of words) {
+      if (word.length < 3) continue;
+      if (!patterns.has(word)) patterns.set(word, { type: 'word', terms: [] });
+      const existing = patterns.get(word)!;
+      if (!existing.terms.some((et) => et.term === t.term)) {
+        existing.terms.push(t);
+      }
+    }
+  }
+
+  return patterns;
+}
+
+export const gads_search_term_pattern_analysis = {
+  name: "gads_search_term_pattern_analysis",
+  description:
+    "Cluster search terms by linguistic patterns (prefixes, common words) to identify waste and suggest negative keywords. Queries search_term_view, extracts patterns from term text, groups by pattern, and flags groups with high spend but low conversions. Returns ranked wasteful patterns with projected monthly savings.",
+  inputSchema: z.object({
+    customer_id: z.string().optional().describe("10-digit customer ID (no dashes). Falls back to GOOGLE_ADS_CUSTOMER_ID."),
+    campaign_filter: z.string().optional().describe('Optional campaign name prefix filter (LIKE prefix%)'),
+    date_range_days: z.number().optional().default(30).describe("Metrics window in days (default 30, max 90)"),
+    min_spend_per_pattern: z.number().optional().default(100).describe("Minimum total spend for a pattern to be reported (default 100)"),
+    min_term_count: z.number().optional().default(3).describe("Minimum number of distinct search terms for a pattern (default 3)"),
+  }),
+  async handler({
+    customer_id,
+    campaign_filter,
+    date_range_days,
+    min_spend_per_pattern,
+    min_term_count,
+  }: {
+    customer_id?: string;
+    campaign_filter?: string;
+    date_range_days?: number;
+    min_spend_per_pattern?: number;
+    min_term_count?: number;
+  }) {
+    const c = getClient(customer_id);
+    const days = Math.max(1, Math.min(date_range_days ?? 30, 90));
+    const minSpend = Math.max(0, min_spend_per_pattern ?? 100);
+    const minTermCount = Math.max(2, min_term_count ?? 3);
+
+    const end = new Date();
+    const start = new Date(end.getTime() - (days - 1) * 86_400_000);
+    const isoDate = (d: Date) => d.toISOString().slice(0, 10);
+
+    const wheres = [`segments.date BETWEEN '${isoDate(start)}' AND '${isoDate(end)}'`];
+    if (campaign_filter) {
+      wheres.push(`campaign.name LIKE '${campaign_filter.replace(/'/g, "\\'")}%'`);
+    }
+
+    const rows = await c.query<{
+      campaign: { id: string; name: string };
+      searchTermView: { searchTerm: string };
+      metrics: { impressions: string; clicks: string; costMicros: string; conversions: string };
+    }>(`
+      SELECT campaign.id, campaign.name, search_term_view.search_term,
+             metrics.impressions, metrics.clicks, metrics.cost_micros, metrics.conversions
+      FROM search_term_view
+      WHERE ${wheres.join(' AND ')}
+      ORDER BY metrics.cost_micros DESC
+      LIMIT 5000
+    `);
+
+    const terms = rows.map((r) => ({
+      campaign_id: r.campaign?.id ?? '',
+      campaign_name: r.campaign?.name ?? '',
+      term: String(r.searchTermView?.searchTerm ?? '').toLowerCase().trim(),
+      spend: Number(r.metrics?.costMicros ?? 0) / 1_000_000,
+      clicks: Number(r.metrics?.clicks ?? 0),
+      conversions: Number(r.metrics?.conversions ?? 0),
+    })).filter((t) => t.term.length > 0);
+
+    const patterns = extractPatterns(terms);
+
+    const groups: PatternGroup[] = [];
+    for (const [pattern, data] of patterns) {
+      if (data.terms.length < minTermCount) continue;
+
+      const totalSpend = data.terms.reduce((s, t) => s + t.spend, 0);
+      const totalClicks = data.terms.reduce((s, t) => s + t.clicks, 0);
+      const totalConversions = data.terms.reduce((s, t) => s + t.conversions, 0);
+
+      if (totalSpend < minSpend) continue;
+
+      const isWasteful = totalConversions === 0 || (totalConversions > 0 && totalSpend / totalConversions > 5000);
+      if (!isWasteful) continue;
+
+      groups.push({
+        pattern,
+        pattern_type: data.type,
+        term_count: data.terms.length,
+        total_spend: Math.round(totalSpend * 100) / 100,
+        total_clicks: totalClicks,
+        total_conversions: totalConversions,
+        terms: [...new Set(data.terms.map((t) => t.term))].slice(0, 10),
+        recommendation: `Add broad negative keyword "${pattern}"`,
+        projected_savings_monthly: Math.round(totalSpend * (30 / days) * 100) / 100,
+      });
+    }
+
+    groups.sort((a, b) => b.projected_savings_monthly - a.projected_savings_monthly);
+
+    return {
+      terms_analyzed: terms.length,
+      days_analyzed: days,
+      min_spend_threshold: minSpend,
+      patterns_found: groups.length,
+      wasteful_patterns: groups.slice(0, 20),
+      customer_id: c.customerId,
     };
   },
 };
@@ -1142,6 +1343,7 @@ export const GOOGLE_ADS_TOOLS = [
   gads_add_negative,
   gads_add_negative_keyword,
   gads_campaign_overlap,
+  gads_search_term_pattern_analysis,
   gads_pause_campaign,
   gads_resume_campaign,
   gads_update_campaign_budget,

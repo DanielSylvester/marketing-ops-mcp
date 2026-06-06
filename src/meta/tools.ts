@@ -34,7 +34,7 @@ function leadCount(actions?: Array<{ action_type: string; value: string }>): num
 export const meta_list_accounts = {
   name: "meta_list_accounts",
   description:
-    "List configured Meta ad accounts (Smartworks India, Workstudio Singapore) with brand metadata. Run this first to discover what is available.",
+    "List configured Meta ad accounts with brand metadata. Run this first to discover what is available.",
   inputSchema: z.object({}),
   async handler() {
     const brands = listConfiguredMetaBrands();

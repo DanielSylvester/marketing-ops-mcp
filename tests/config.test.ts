@@ -3,32 +3,32 @@ import assert from "node:assert";
 import { listConfiguredMetaBrands, getMetaAccount } from "../src/config.js";
 
 describe("config", () => {
-  it("discovers legacy brands from env", () => {
+  it("discovers brands from META_BRANDS env", () => {
     const brands = listConfiguredMetaBrands();
-    assert.deepStrictEqual(brands.sort(), ["smartworks", "workstudio"]);
+    assert.deepStrictEqual(brands.sort(), ["acme", "globex"]);
   });
 
-  it("returns correct smartworks config", () => {
-    const cfg = getMetaAccount("smartworks");
-    assert.strictEqual(cfg.brand, "smartworks");
-    assert.strictEqual(cfg.currency, "INR");
-    assert.strictEqual(cfg.campaignPrefix, "SW_");
-    assert.strictEqual(cfg.timezone, "Asia/Kolkata");
+  it("returns correct config for a generic brand", () => {
+    const cfg = getMetaAccount("acme");
+    assert.strictEqual(cfg.brand, "acme");
+    assert.strictEqual(cfg.currency, "USD");
+    assert.strictEqual(cfg.campaignPrefix, "AC_");
+    assert.strictEqual(cfg.timezone, "America/New_York");
     assert.ok(cfg.accessToken);
   });
 
-  it("returns correct workstudio config", () => {
-    const cfg = getMetaAccount("workstudio");
-    assert.strictEqual(cfg.brand, "workstudio");
-    assert.strictEqual(cfg.currency, "SGD");
-    assert.strictEqual(cfg.campaignPrefix, "WS_");
-    assert.strictEqual(cfg.timezone, "Asia/Singapore");
+  it("returns correct config for another generic brand", () => {
+    const cfg = getMetaAccount("globex");
+    assert.strictEqual(cfg.brand, "globex");
+    assert.strictEqual(cfg.currency, "EUR");
+    assert.strictEqual(cfg.campaignPrefix, "GL_");
+    assert.strictEqual(cfg.timezone, "Europe/London");
     assert.ok(cfg.accessToken);
   });
 
   it("caches account config", () => {
-    const a = getMetaAccount("smartworks");
-    const b = getMetaAccount("smartworks");
+    const a = getMetaAccount("acme");
+    const b = getMetaAccount("acme");
     assert.strictEqual(a, b);
   });
 });
