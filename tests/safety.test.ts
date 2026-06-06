@@ -18,24 +18,41 @@ describe("safety", () => {
   });
 
   describe("shouldExecute", () => {
-    it("blocks when env is not set", () => {
-      const original = process.env.MARKETING_OPS_MCP_EXECUTE;
-      delete process.env.MARKETING_OPS_MCP_EXECUTE;
-      const gate = shouldExecute("test_tool");
-      assert.strictEqual(gate.execute, false);
-      assert.ok(gate.reason?.includes("MARKETING_OPS_MCP_EXECUTE"));
-      // Restore
-      if (original) process.env.MARKETING_OPS_MCP_EXECUTE = original;
-    });
-
-    it("allows when env is set to 1", () => {
-      const original = process.env.MARKETING_OPS_MCP_EXECUTE;
-      process.env.MARKETING_OPS_MCP_EXECUTE = "1";
+    it("allows string form (backward compat)", () => {
       const gate = shouldExecute("test_tool");
       assert.strictEqual(gate.execute, true);
-      // Restore
-      if (original) process.env.MARKETING_OPS_MCP_EXECUTE = original;
-      else delete process.env.MARKETING_OPS_MCP_EXECUTE;
+    });
+
+    it("allows when cost impact is below threshold", () => {
+      const original = process.env.MARKETING_OPS_MCP_HIGH_IMPACT_THRESHOLD;
+      process.env.MARKETING_OPS_MCP_HIGH_IMPACT_THRESHOLD = "5000";
+      const gate = shouldExecute({ toolName: "test_tool", costImpactAbsolute: 100 });
+      assert.strictEqual(gate.execute, true);
+      if (original) process.env.MARKETING_OPS_MCP_HIGH_IMPACT_THRESHOLD = original;
+      else delete process.env.MARKETING_OPS_MCP_HIGH_IMPACT_THRESHOLD;
+    });
+
+    it("blocks when cost impact exceeds threshold", () => {
+      const original = process.env.MARKETING_OPS_MCP_HIGH_IMPACT_THRESHOLD;
+      process.env.MARKETING_OPS_MCP_HIGH_IMPACT_THRESHOLD = "5000";
+      const gate = shouldExecute({ toolName: "test_tool", costImpactAbsolute: 10000 });
+      assert.strictEqual(gate.execute, false);
+      assert.ok(gate.reason?.includes("High-impact change blocked"));
+      if (original) process.env.MARKETING_OPS_MCP_HIGH_IMPACT_THRESHOLD = original;
+      else delete process.env.MARKETING_OPS_MCP_HIGH_IMPACT_THRESHOLD;
+    });
+
+    it("allows high impact when confirmHighImpact is true", () => {
+      const original = process.env.MARKETING_OPS_MCP_HIGH_IMPACT_THRESHOLD;
+      process.env.MARKETING_OPS_MCP_HIGH_IMPACT_THRESHOLD = "5000";
+      const gate = shouldExecute({
+        toolName: "test_tool",
+        costImpactAbsolute: 10000,
+        confirmHighImpact: true,
+      });
+      assert.strictEqual(gate.execute, true);
+      if (original) process.env.MARKETING_OPS_MCP_HIGH_IMPACT_THRESHOLD = original;
+      else delete process.env.MARKETING_OPS_MCP_HIGH_IMPACT_THRESHOLD;
     });
   });
 

@@ -18,7 +18,11 @@ Each user runs it locally with their own tokens. There is no hosted server.
 - `gads_insights` — campaign or keyword performance for a date range
 - `gads_search_terms` — what users actually typed; filter by spend
 - `gads_list_negatives` — campaign-level negative keywords
-- `gads_add_negative` — **MUTATION** — add a negative keyword to a campaign
+- `gads_add_negative` — **MUTATION** — add a campaign-level negative keyword
+- `gads_add_negative_keyword` — **MUTATION** — add an ad group-level negative keyword
+- `gads_pause_campaign` — **MUTATION** — pause a campaign (dry-run by default)
+- `gads_resume_campaign` — **MUTATION** — resume a paused campaign (dry-run by default)
+- `gads_update_campaign_budget` — **MUTATION** — change daily budget with typed confirmation + high-impact gating (dry-run by default)
 
 ## Setup
 
@@ -80,10 +84,13 @@ npm start     # node dist/index.js
 
 ## Mutation safety
 
-`gads_add_negative` is the only mutation in the MVP. Claude Code requires permission for
-each tool call, so nothing changes the live account without an explicit approval prompt.
+All mutations are dry-run by default. Each tool returns a preview on the first call;
+you must explicitly pass `dry_run: false` to apply. `gads_update_campaign_budget` also
+requires a typed `confirm` string (echoed from the preview) and `confirm_high_impact`
+for large deltas. This is the same safety model as `gads-mcp`.
+
 If you want to disable mutations entirely (e.g. for a teammate still onboarding), comment
-the tool out of `src/google/tools.ts` and rebuild.
+the mutation tools out of `src/google/tools.ts` and rebuild.
 
 ## Adding tools
 
