@@ -2,7 +2,7 @@
 /**
  * marketing-ops-mcp — MCP server for Meta Ads + Google Ads.
  *
- * Transport: stdio (run by Claude Code).
+ * Transport: stdio (run by the MCP client).
  *
  * Each user supplies their own tokens via env vars or a .env file passed by the
  * client launching this server. See README and .env.example for what to set.
