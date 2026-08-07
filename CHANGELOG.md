@@ -33,3 +33,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 **Files:** .gitignore,.opencode/opencode.json .opencode/plugins/graphify.js,AGENTS.md graphify-out/.graphify_analysis.json,graphify-out/.graphify_labels.json graphify-out/.graphify_root,graphify-out/GRAPH_REPORT.md graphify-out/graph.json,graphify-out/manifest.json
 
+## 2026-08-07 16:36:07 — aa845d9c250ae28e8fb9ed44a151ae2a0a12d7b6
+
+**Message:** graphify: improve heuristic community labels
+
+**Files:** graphify-out/.graphify_labels.json,graphify-out/GRAPH_REPORT.md graphify-out/graph.json
+
