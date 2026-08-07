@@ -11,7 +11,7 @@
       "_origin": "ast",
       "community": 15,
       "norm_label": "eslint.config.mjs",
-      "community_name": "Eslint.Config.Mjs",
+      "community_name": "Eslint Config",
       "id": "eslint_config"
     },
     {
@@ -22,7 +22,7 @@
       "_origin": "ast",
       "community": 4,
       "norm_label": "package.json",
-      "community_name": "Package.Json",
+      "community_name": "Package",
       "id": "package"
     },
     {
@@ -33,7 +33,7 @@
       "_origin": "ast",
       "community": 4,
       "norm_label": "name",
-      "community_name": "Package.Json",
+      "community_name": "Package",
       "id": "package_name"
     },
     {
@@ -44,7 +44,7 @@
       "_origin": "ast",
       "community": 4,
       "norm_label": "version",
-      "community_name": "Package.Json",
+      "community_name": "Package",
       "id": "package_version"
     },
     {
@@ -55,7 +55,7 @@
       "_origin": "ast",
       "community": 4,
       "norm_label": "description",
-      "community_name": "Package.Json",
+      "community_name": "Package",
       "id": "package_description"
     },
     {
@@ -66,7 +66,7 @@
       "_origin": "ast",
       "community": 4,
       "norm_label": "type",
-      "community_name": "Package.Json",
+      "community_name": "Package",
       "id": "package_type"
     },
     {
@@ -77,7 +77,7 @@
       "_origin": "ast",
       "community": 4,
       "norm_label": "bin",
-      "community_name": "Package.Json",
+      "community_name": "Package",
       "id": "package_bin"
     },
     {
@@ -88,7 +88,7 @@
       "_origin": "ast",
       "community": 4,
       "norm_label": "marketing-ops-mcp",
-      "community_name": "Package.Json",
+      "community_name": "Package",
       "id": "package_bin_marketing_ops_mcp"
     },
     {
@@ -99,7 +99,7 @@
       "_origin": "ast",
       "community": 4,
       "norm_label": "scripts",
-      "community_name": "Package.Json",
+      "community_name": "Package",
       "id": "package_scripts"
     },
     {
@@ -110,7 +110,7 @@
       "_origin": "ast",
       "community": 4,
       "norm_label": "build",
-      "community_name": "Package.Json",
+      "community_name": "Package",
       "id": "package_scripts_build"
     },
     {
@@ -121,7 +121,7 @@
       "_origin": "ast",
       "community": 4,
       "norm_label": "dev",
-      "community_name": "Package.Json",
+      "community_name": "Package",
       "id": "package_scripts_dev"
     },
     {
@@ -132,7 +132,7 @@
       "_origin": "ast",
       "community": 4,
       "norm_label": "start",
-      "community_name": "Package.Json",
+      "community_name": "Package",
       "id": "package_scripts_start"
     },
     {
@@ -143,7 +143,7 @@
       "_origin": "ast",
       "community": 4,
       "norm_label": "lint",
-      "community_name": "Package.Json",
+      "community_name": "Package",
       "id": "package_scripts_lint"
     },
     {
@@ -154,7 +154,7 @@
       "_origin": "ast",
       "community": 4,
       "norm_label": "format",
-      "community_name": "Package.Json",
+      "community_name": "Package",
       "id": "package_scripts_format"
     },
     {
@@ -165,7 +165,7 @@
       "_origin": "ast",
       "community": 4,
       "norm_label": "format:check",
-      "community_name": "Package.Json",
+      "community_name": "Package",
       "id": "package_scripts_format_check"
     },
     {
@@ -176,7 +176,7 @@
       "_origin": "ast",
       "community": 4,
       "norm_label": "typecheck",
-      "community_name": "Package.Json",
+      "community_name": "Package",
       "id": "package_scripts_typecheck"
     },
     {
@@ -187,7 +187,7 @@
       "_origin": "ast",
       "community": 4,
       "norm_label": "test",
-      "community_name": "Package.Json",
+      "community_name": "Package",
       "id": "package_scripts_test"
     },
     {
@@ -198,7 +198,7 @@
       "_origin": "ast",
       "community": 4,
       "norm_label": "test:stress",
-      "community_name": "Package.Json",
+      "community_name": "Package",
       "id": "package_scripts_test_stress"
     },
     {
@@ -209,7 +209,7 @@
       "_origin": "ast",
       "community": 4,
       "norm_label": "dependencies",
-      "community_name": "Package.Json",
+      "community_name": "Package",
       "id": "package_dependencies"
     },
     {
@@ -220,7 +220,7 @@
       "_origin": "ast",
       "community": 4,
       "norm_label": "@libsql/client",
-      "community_name": "Package.Json",
+      "community_name": "Package",
       "id": "package_dependencies_libsql_client"
     },
     {
@@ -231,7 +231,7 @@
       "_origin": "ast",
       "community": 4,
       "norm_label": "@libsql/client",
-      "community_name": "Package.Json",
+      "community_name": "Package",
       "id": "libsql_client"
     },
     {
@@ -242,7 +242,7 @@
       "_origin": "ast",
       "community": 4,
       "norm_label": "@modelcontextprotocol/sdk",
-      "community_name": "Package.Json",
+      "community_name": "Package",
       "id": "package_dependencies_modelcontextprotocol_sdk"
     },
     {
@@ -253,7 +253,7 @@
       "_origin": "ast",
       "community": 4,
       "norm_label": "@modelcontextprotocol/sdk",
-      "community_name": "Package.Json",
+      "community_name": "Package",
       "id": "modelcontextprotocol_sdk"
     },
     {
@@ -264,7 +264,7 @@
       "_origin": "ast",
       "community": 4,
       "norm_label": "zod",
-      "community_name": "Package.Json",
+      "community_name": "Package",
       "id": "package_dependencies_zod"
     },
     {
@@ -275,7 +275,7 @@
       "_origin": "ast",
       "community": 4,
       "norm_label": "zod",
-      "community_name": "Package.Json",
+      "community_name": "Package",
       "id": "zod"
     },
     {
@@ -286,7 +286,7 @@
       "_origin": "ast",
       "community": 4,
       "norm_label": "zod-to-json-schema",
-      "community_name": "Package.Json",
+      "community_name": "Package",
       "id": "package_dependencies_zod_to_json_schema"
     },
     {
@@ -297,7 +297,7 @@
       "_origin": "ast",
       "community": 4,
       "norm_label": "zod-to-json-schema",
-      "community_name": "Package.Json",
+      "community_name": "Package",
       "id": "zod_to_json_schema"
     },
     {
@@ -308,7 +308,7 @@
       "_origin": "ast",
       "community": 9,
       "norm_label": "devdependencies",
-      "community_name": "Package.Json 2",
+      "community_name": "Package 2",
       "id": "package_devdependencies"
     },
     {
@@ -319,7 +319,7 @@
       "_origin": "ast",
       "community": 9,
       "norm_label": "@eslint/js",
-      "community_name": "Package.Json 2",
+      "community_name": "Package 2",
       "id": "package_devdependencies_eslint_js"
     },
     {
@@ -330,7 +330,7 @@
       "_origin": "ast",
       "community": 9,
       "norm_label": "@eslint/js",
-      "community_name": "Package.Json 2",
+      "community_name": "Package 2",
       "id": "eslint_js"
     },
     {
@@ -341,7 +341,7 @@
       "_origin": "ast",
       "community": 9,
       "norm_label": "@types/node",
-      "community_name": "Package.Json 2",
+      "community_name": "Package 2",
       "id": "package_devdependencies_types_node"
     },
     {
@@ -352,7 +352,7 @@
       "_origin": "ast",
       "community": 9,
       "norm_label": "@types/node",
-      "community_name": "Package.Json 2",
+      "community_name": "Package 2",
       "id": "types_node"
     },
     {
@@ -363,7 +363,7 @@
       "_origin": "ast",
       "community": 9,
       "norm_label": "eslint",
-      "community_name": "Package.Json 2",
+      "community_name": "Package 2",
       "id": "package_devdependencies_eslint"
     },
     {
@@ -374,7 +374,7 @@
       "_origin": "ast",
       "community": 9,
       "norm_label": "eslint",
-      "community_name": "Package.Json 2",
+      "community_name": "Package 2",
       "id": "eslint"
     },
     {
@@ -385,7 +385,7 @@
       "_origin": "ast",
       "community": 9,
       "norm_label": "eslint-config-prettier",
-      "community_name": "Package.Json 2",
+      "community_name": "Package 2",
       "id": "package_devdependencies_eslint_config_prettier"
     },
     {
@@ -396,7 +396,7 @@
       "_origin": "ast",
       "community": 9,
       "norm_label": "eslint-config-prettier",
-      "community_name": "Package.Json 2",
+      "community_name": "Package 2",
       "id": "eslint_config_prettier"
     },
     {
@@ -407,7 +407,7 @@
       "_origin": "ast",
       "community": 9,
       "norm_label": "prettier",
-      "community_name": "Package.Json 2",
+      "community_name": "Package 2",
       "id": "package_devdependencies_prettier"
     },
     {
@@ -418,7 +418,7 @@
       "_origin": "ast",
       "community": 9,
       "norm_label": "prettier",
-      "community_name": "Package.Json 2",
+      "community_name": "Package 2",
       "id": "prettier"
     },
     {
@@ -429,7 +429,7 @@
       "_origin": "ast",
       "community": 9,
       "norm_label": "tsx",
-      "community_name": "Package.Json 2",
+      "community_name": "Package 2",
       "id": "package_devdependencies_tsx"
     },
     {
@@ -440,7 +440,7 @@
       "_origin": "ast",
       "community": 9,
       "norm_label": "tsx",
-      "community_name": "Package.Json 2",
+      "community_name": "Package 2",
       "id": "tsx"
     },
     {
@@ -451,7 +451,7 @@
       "_origin": "ast",
       "community": 9,
       "norm_label": "typescript",
-      "community_name": "Package.Json 2",
+      "community_name": "Package 2",
       "id": "package_devdependencies_typescript"
     },
     {
@@ -462,7 +462,7 @@
       "_origin": "ast",
       "community": 9,
       "norm_label": "typescript",
-      "community_name": "Package.Json 2",
+      "community_name": "Package 2",
       "id": "typescript"
     },
     {
@@ -473,7 +473,7 @@
       "_origin": "ast",
       "community": 9,
       "norm_label": "typescript-eslint",
-      "community_name": "Package.Json 2",
+      "community_name": "Package 2",
       "id": "package_devdependencies_typescript_eslint"
     },
     {
@@ -484,7 +484,7 @@
       "_origin": "ast",
       "community": 9,
       "norm_label": "typescript-eslint",
-      "community_name": "Package.Json 2",
+      "community_name": "Package 2",
       "id": "typescript_eslint"
     },
     {
@@ -495,7 +495,7 @@
       "_origin": "ast",
       "community": 4,
       "norm_label": "engines",
-      "community_name": "Package.Json",
+      "community_name": "Package",
       "id": "package_engines"
     },
     {
@@ -506,7 +506,7 @@
       "_origin": "ast",
       "community": 4,
       "norm_label": "node",
-      "community_name": "Package.Json",
+      "community_name": "Package",
       "id": "package_engines_node"
     },
     {
@@ -517,7 +517,7 @@
       "_origin": "ast",
       "community": 2,
       "norm_label": "dry-run-final.ts",
-      "community_name": "Src Config.Ts",
+      "community_name": "Src Config",
       "id": "scripts_dry_run_final"
     },
     {
@@ -529,7 +529,7 @@
       "_origin": "ast",
       "community": 2,
       "norm_label": "test()",
-      "community_name": "Src Config.Ts",
+      "community_name": "Src Config",
       "id": "scripts_dry_run_final_test"
     },
     {
@@ -540,7 +540,7 @@
       "_origin": "ast",
       "community": 2,
       "norm_label": "dry-run-meta-2.ts",
-      "community_name": "Src Config.Ts",
+      "community_name": "Src Config",
       "id": "scripts_dry_run_meta_2"
     },
     {
@@ -552,7 +552,7 @@
       "_origin": "ast",
       "community": 2,
       "norm_label": "test()",
-      "community_name": "Src Config.Ts",
+      "community_name": "Src Config",
       "id": "scripts_dry_run_meta_2_test"
     },
     {
@@ -563,7 +563,7 @@
       "_origin": "ast",
       "community": 2,
       "norm_label": "dry-run-meta.ts",
-      "community_name": "Src Config.Ts",
+      "community_name": "Src Config",
       "id": "scripts_dry_run_meta"
     },
     {
@@ -575,7 +575,7 @@
       "_origin": "ast",
       "community": 2,
       "norm_label": "dryrun()",
-      "community_name": "Src Config.Ts",
+      "community_name": "Src Config",
       "id": "scripts_dry_run_meta_dryrun"
     },
     {
@@ -586,7 +586,7 @@
       "_origin": "ast",
       "community": 2,
       "norm_label": "live-safe-test.ts",
-      "community_name": "Src Config.Ts",
+      "community_name": "Src Config",
       "id": "scripts_live_safe_test"
     },
     {
@@ -598,7 +598,7 @@
       "_origin": "ast",
       "community": 2,
       "norm_label": "safetest()",
-      "community_name": "Src Config.Ts",
+      "community_name": "Src Config",
       "id": "scripts_live_safe_test_safetest"
     },
     {
@@ -609,7 +609,7 @@
       "_origin": "ast",
       "community": 11,
       "norm_label": "stress-test.js",
-      "community_name": "Scripts Stress Test.Js",
+      "community_name": "Scripts Stress Test",
       "id": "scripts_stress_test"
     },
     {
@@ -620,7 +620,7 @@
       "_origin": "ast",
       "community": 11,
       "norm_label": "__dirname",
-      "community_name": "Scripts Stress Test.Js",
+      "community_name": "Scripts Stress Test",
       "id": "scripts_stress_test_dirname"
     },
     {
@@ -631,7 +631,7 @@
       "_origin": "ast",
       "community": 11,
       "norm_label": "server_path",
-      "community_name": "Scripts Stress Test.Js",
+      "community_name": "Scripts Stress Test",
       "id": "scripts_stress_test_server_path"
     },
     {
@@ -642,7 +642,7 @@
       "_origin": "ast",
       "community": 11,
       "norm_label": "colors",
-      "community_name": "Scripts Stress Test.Js",
+      "community_name": "Scripts Stress Test",
       "id": "scripts_stress_test_colors"
     },
     {
@@ -653,7 +653,7 @@
       "_origin": "ast",
       "community": 11,
       "norm_label": "errors",
-      "community_name": "Scripts Stress Test.Js",
+      "community_name": "Scripts Stress Test",
       "id": "scripts_stress_test_errors"
     },
     {
@@ -665,7 +665,7 @@
       "_origin": "ast",
       "community": 11,
       "norm_label": "pass()",
-      "community_name": "Scripts Stress Test.Js",
+      "community_name": "Scripts Stress Test",
       "id": "scripts_stress_test_pass"
     },
     {
@@ -677,7 +677,7 @@
       "_origin": "ast",
       "community": 11,
       "norm_label": "fail()",
-      "community_name": "Scripts Stress Test.Js",
+      "community_name": "Scripts Stress Test",
       "id": "scripts_stress_test_fail"
     },
     {
@@ -689,7 +689,7 @@
       "_origin": "ast",
       "community": 11,
       "norm_label": "info()",
-      "community_name": "Scripts Stress Test.Js",
+      "community_name": "Scripts Stress Test",
       "id": "scripts_stress_test_info"
     },
     {
@@ -700,7 +700,7 @@
       "_origin": "ast",
       "community": 11,
       "norm_label": "pendingrequests",
-      "community_name": "Scripts Stress Test.Js",
+      "community_name": "Scripts Stress Test",
       "id": "scripts_stress_test_pendingrequests"
     },
     {
@@ -712,7 +712,7 @@
       "_origin": "ast",
       "community": 11,
       "norm_label": "attachstdouthandler()",
-      "community_name": "Scripts Stress Test.Js",
+      "community_name": "Scripts Stress Test",
       "id": "scripts_stress_test_attachstdouthandler"
     },
     {
@@ -724,7 +724,7 @@
       "_origin": "ast",
       "community": 11,
       "norm_label": "sendrequest()",
-      "community_name": "Scripts Stress Test.Js",
+      "community_name": "Scripts Stress Test",
       "id": "scripts_stress_test_sendrequest"
     },
     {
@@ -736,7 +736,7 @@
       "_origin": "ast",
       "community": 11,
       "norm_label": "runtests()",
-      "community_name": "Scripts Stress Test.Js",
+      "community_name": "Scripts Stress Test",
       "id": "scripts_stress_test_runtests"
     },
     {
@@ -747,7 +747,7 @@
       "_origin": "ast",
       "community": 2,
       "norm_label": "verify.ts",
-      "community_name": "Src Config.Ts",
+      "community_name": "Src Config",
       "id": "scripts_verify"
     },
     {
@@ -759,7 +759,7 @@
       "_origin": "ast",
       "community": 2,
       "norm_label": "verify()",
-      "community_name": "Src Config.Ts",
+      "community_name": "Src Config",
       "id": "scripts_verify_verify"
     },
     {
@@ -770,7 +770,7 @@
       "_origin": "ast",
       "community": 5,
       "norm_label": "audit.ts",
-      "community_name": "Src Index.Ts",
+      "community_name": "Src Index",
       "id": "src_audit"
     },
     {
@@ -783,7 +783,7 @@
       "_origin": "ast",
       "community": 5,
       "norm_label": "auditrecord",
-      "community_name": "Src Index.Ts",
+      "community_name": "Src Index",
       "id": "src_audit_auditrecord"
     },
     {
@@ -795,7 +795,7 @@
       "_origin": "ast",
       "community": 5,
       "norm_label": "logaudit()",
-      "community_name": "Src Index.Ts",
+      "community_name": "Src Index",
       "id": "src_audit_logaudit"
     },
     {
@@ -808,7 +808,7 @@
       "_origin": "ast",
       "community": 5,
       "norm_label": "auditquery",
-      "community_name": "Src Index.Ts",
+      "community_name": "Src Index",
       "id": "src_audit_auditquery"
     },
     {
@@ -820,7 +820,7 @@
       "_origin": "ast",
       "community": 5,
       "norm_label": "queryaudit()",
-      "community_name": "Src Index.Ts",
+      "community_name": "Src Index",
       "id": "src_audit_queryaudit"
     },
     {
@@ -832,7 +832,7 @@
       "_origin": "ast",
       "community": 5,
       "norm_label": "safejson()",
-      "community_name": "Src Index.Ts",
+      "community_name": "Src Index",
       "id": "src_audit_safejson"
     },
     {
@@ -843,7 +843,7 @@
       "_origin": "ast",
       "community": 2,
       "norm_label": "src/config.ts",
-      "community_name": "Src Config.Ts",
+      "community_name": "Src Config",
       "id": "src_config"
     },
     {
@@ -856,7 +856,7 @@
       "_origin": "ast",
       "community": 2,
       "norm_label": "brand",
-      "community_name": "Src Config.Ts",
+      "community_name": "Src Config",
       "id": "src_config_brand"
     },
     {
@@ -867,7 +867,7 @@
       "_origin": "ast",
       "community": 2,
       "norm_label": "currency_symbols",
-      "community_name": "Src Config.Ts",
+      "community_name": "Src Config",
       "id": "src_config_currency_symbols"
     },
     {
@@ -880,7 +880,7 @@
       "_origin": "ast",
       "community": 2,
       "norm_label": "metaaccountconfig",
-      "community_name": "Src Config.Ts",
+      "community_name": "Src Config",
       "id": "src_config_metaaccountconfig"
     },
     {
@@ -893,7 +893,7 @@
       "_origin": "ast",
       "community": 7,
       "norm_label": "googleadsconfig",
-      "community_name": "Src Google 2",
+      "community_name": "Src Google Client",
       "id": "src_config_googleadsconfig"
     },
     {
@@ -905,7 +905,7 @@
       "_origin": "ast",
       "community": 3,
       "norm_label": "envorthrow()",
-      "community_name": "Src Google",
+      "community_name": "Src Google Tools",
       "id": "src_config_envorthrow"
     },
     {
@@ -917,7 +917,7 @@
       "_origin": "ast",
       "community": 2,
       "norm_label": "envoptional()",
-      "community_name": "Src Config.Ts",
+      "community_name": "Src Config",
       "id": "src_config_envoptional"
     },
     {
@@ -928,7 +928,7 @@
       "_origin": "ast",
       "community": 2,
       "norm_label": "meta_api_version",
-      "community_name": "Src Config.Ts",
+      "community_name": "Src Config",
       "id": "src_config_meta_api_version"
     },
     {
@@ -939,7 +939,7 @@
       "_origin": "ast",
       "community": 2,
       "norm_label": "meta_base_url",
-      "community_name": "Src Config.Ts",
+      "community_name": "Src Config",
       "id": "src_config_meta_base_url"
     },
     {
@@ -951,7 +951,7 @@
       "_origin": "ast",
       "community": 2,
       "norm_label": "discoverbrands()",
-      "community_name": "Src Config.Ts",
+      "community_name": "Src Config",
       "id": "src_config_discoverbrands"
     },
     {
@@ -963,7 +963,7 @@
       "_origin": "ast",
       "community": 2,
       "norm_label": "buildmetaaccount()",
-      "community_name": "Src Config.Ts",
+      "community_name": "Src Config",
       "id": "src_config_buildmetaaccount"
     },
     {
@@ -974,7 +974,7 @@
       "_origin": "ast",
       "community": 2,
       "norm_label": "_metaaccounts",
-      "community_name": "Src Config.Ts",
+      "community_name": "Src Config",
       "id": "src_config_metaaccounts"
     },
     {
@@ -986,7 +986,7 @@
       "_origin": "ast",
       "community": 2,
       "norm_label": "getmetaaccount()",
-      "community_name": "Src Config.Ts",
+      "community_name": "Src Config",
       "id": "src_config_getmetaaccount"
     },
     {
@@ -998,7 +998,7 @@
       "_origin": "ast",
       "community": 2,
       "norm_label": "listconfiguredmetabrands()",
-      "community_name": "Src Config.Ts",
+      "community_name": "Src Config",
       "id": "src_config_listconfiguredmetabrands"
     },
     {
@@ -1010,7 +1010,7 @@
       "_origin": "ast",
       "community": 3,
       "norm_label": "getgoogleadsconfig()",
-      "community_name": "Src Google",
+      "community_name": "Src Google Tools",
       "id": "src_config_getgoogleadsconfig"
     },
     {
@@ -1022,7 +1022,7 @@
       "_origin": "ast",
       "community": 2,
       "norm_label": "isgoogleadsconfigured()",
-      "community_name": "Src Config.Ts",
+      "community_name": "Src Config",
       "id": "src_config_isgoogleadsconfigured"
     },
     {
@@ -1033,7 +1033,7 @@
       "_origin": "ast",
       "community": 10,
       "norm_label": "errors.ts",
-      "community_name": "Src Linkedin 3",
+      "community_name": "Src Linkedin Client 2",
       "id": "src_errors"
     },
     {
@@ -1046,7 +1046,7 @@
       "_origin": "ast",
       "community": 10,
       "norm_label": "linkedinapierror",
-      "community_name": "Src Linkedin 3",
+      "community_name": "Src Linkedin Client 2",
       "id": "src_errors_linkedinapierror"
     },
     {
@@ -1058,7 +1058,7 @@
       "_origin": "ast",
       "community": 10,
       "norm_label": ".constructor()",
-      "community_name": "Src Linkedin 3",
+      "community_name": "Src Linkedin Client 2",
       "id": "src_errors_linkedinapierror_constructor"
     },
     {
@@ -1071,7 +1071,7 @@
       "_origin": "ast",
       "community": 10,
       "norm_label": "mcptoolerror",
-      "community_name": "Src Linkedin 3",
+      "community_name": "Src Linkedin Client 2",
       "id": "src_errors_mcptoolerror"
     },
     {
@@ -1083,7 +1083,7 @@
       "_origin": "ast",
       "community": 10,
       "norm_label": ".constructor()",
-      "community_name": "Src Linkedin 3",
+      "community_name": "Src Linkedin Client 2",
       "id": "src_errors_mcptoolerror_constructor"
     },
     {
@@ -1094,7 +1094,7 @@
       "_origin": "ast",
       "community": 7,
       "norm_label": "google/client.ts",
-      "community_name": "Src Google 2",
+      "community_name": "Src Google Client",
       "id": "src_google_client"
     },
     {
@@ -1107,7 +1107,7 @@
       "_origin": "ast",
       "community": 7,
       "norm_label": "googleadsclienterror",
-      "community_name": "Src Google 2",
+      "community_name": "Src Google Client",
       "id": "src_google_client_googleadsclienterror"
     },
     {
@@ -1119,7 +1119,7 @@
       "_origin": "ast",
       "community": 7,
       "norm_label": ".constructor()",
-      "community_name": "Src Google 2",
+      "community_name": "Src Google Client",
       "id": "src_google_client_googleadsclienterror_constructor"
     },
     {
@@ -1132,7 +1132,7 @@
       "_origin": "ast",
       "community": 7,
       "norm_label": "googleadsclient",
-      "community_name": "Src Google 2",
+      "community_name": "Src Google Client",
       "id": "src_google_client_googleadsclient"
     },
     {
@@ -1144,7 +1144,7 @@
       "_origin": "ast",
       "community": 7,
       "norm_label": ".constructor()",
-      "community_name": "Src Google 2",
+      "community_name": "Src Google Client",
       "id": "src_google_client_googleadsclient_constructor"
     },
     {
@@ -1156,7 +1156,7 @@
       "_origin": "ast",
       "community": 7,
       "norm_label": ".sleep()",
-      "community_name": "Src Google 2",
+      "community_name": "Src Google Client",
       "id": "src_google_client_googleadsclient_sleep"
     },
     {
@@ -1168,7 +1168,7 @@
       "_origin": "ast",
       "community": 7,
       "norm_label": ".getaccesstoken()",
-      "community_name": "Src Google 2",
+      "community_name": "Src Google Client",
       "id": "src_google_client_googleadsclient_getaccesstoken"
     },
     {
@@ -1180,7 +1180,7 @@
       "_origin": "ast",
       "community": 7,
       "norm_label": ".headers()",
-      "community_name": "Src Google 2",
+      "community_name": "Src Google Client",
       "id": "src_google_client_googleadsclient_headers"
     },
     {
@@ -1192,7 +1192,7 @@
       "_origin": "ast",
       "community": 7,
       "norm_label": ".request()",
-      "community_name": "Src Google 2",
+      "community_name": "Src Google Client",
       "id": "src_google_client_googleadsclient_request"
     },
     {
@@ -1204,7 +1204,7 @@
       "_origin": "ast",
       "community": 7,
       "norm_label": ".query()",
-      "community_name": "Src Google 2",
+      "community_name": "Src Google Client",
       "id": "src_google_client_googleadsclient_query"
     },
     {
@@ -1216,7 +1216,7 @@
       "_origin": "ast",
       "community": 7,
       "norm_label": ".searchfields()",
-      "community_name": "Src Google 2",
+      "community_name": "Src Google Client",
       "id": "src_google_client_googleadsclient_searchfields"
     },
     {
@@ -1228,7 +1228,7 @@
       "_origin": "ast",
       "community": 7,
       "norm_label": ".mutate()",
-      "community_name": "Src Google 2",
+      "community_name": "Src Google Client",
       "id": "src_google_client_googleadsclient_mutate"
     },
     {
@@ -1240,7 +1240,7 @@
       "_origin": "ast",
       "community": 7,
       "norm_label": ".customerid()",
-      "community_name": "Src Google 2",
+      "community_name": "Src Google Client",
       "id": "src_google_client_googleadsclient_customerid"
     },
     {
@@ -1251,7 +1251,7 @@
       "_origin": "ast",
       "community": 3,
       "norm_label": "google/tools.ts",
-      "community_name": "Src Google",
+      "community_name": "Src Google Tools",
       "id": "src_google_tools"
     },
     {
@@ -1263,7 +1263,7 @@
       "_origin": "ast",
       "community": 3,
       "norm_label": "client()",
-      "community_name": "Src Google",
+      "community_name": "Src Google Tools",
       "id": "src_google_tools_client"
     },
     {
@@ -1275,7 +1275,7 @@
       "_origin": "ast",
       "community": 3,
       "norm_label": "getclient()",
-      "community_name": "Src Google",
+      "community_name": "Src Google Tools",
       "id": "src_google_tools_getclient"
     },
     {
@@ -1286,7 +1286,7 @@
       "_origin": "ast",
       "community": 3,
       "norm_label": "daterange",
-      "community_name": "Src Google",
+      "community_name": "Src Google Tools",
       "id": "src_google_tools_daterange"
     },
     {
@@ -1297,7 +1297,7 @@
       "_origin": "ast",
       "community": 3,
       "norm_label": "gads_gaql_search",
-      "community_name": "Src Google",
+      "community_name": "Src Google Tools",
       "id": "src_google_tools_gads_gaql_search"
     },
     {
@@ -1308,7 +1308,7 @@
       "_origin": "ast",
       "community": 3,
       "norm_label": "gads_list_ad_groups",
-      "community_name": "Src Google",
+      "community_name": "Src Google Tools",
       "id": "src_google_tools_gads_list_ad_groups"
     },
     {
@@ -1319,7 +1319,7 @@
       "_origin": "ast",
       "community": 3,
       "norm_label": "gads_list_keywords",
-      "community_name": "Src Google",
+      "community_name": "Src Google Tools",
       "id": "src_google_tools_gads_list_keywords"
     },
     {
@@ -1330,7 +1330,7 @@
       "_origin": "ast",
       "community": 3,
       "norm_label": "gads_get_resource_metadata",
-      "community_name": "Src Google",
+      "community_name": "Src Google Tools",
       "id": "src_google_tools_gads_get_resource_metadata"
     },
     {
@@ -1341,7 +1341,7 @@
       "_origin": "ast",
       "community": 3,
       "norm_label": "gads_list_campaigns",
-      "community_name": "Src Google",
+      "community_name": "Src Google Tools",
       "id": "src_google_tools_gads_list_campaigns"
     },
     {
@@ -1352,7 +1352,7 @@
       "_origin": "ast",
       "community": 3,
       "norm_label": "gads_insights",
-      "community_name": "Src Google",
+      "community_name": "Src Google Tools",
       "id": "src_google_tools_gads_insights"
     },
     {
@@ -1363,7 +1363,7 @@
       "_origin": "ast",
       "community": 3,
       "norm_label": "gads_search_terms",
-      "community_name": "Src Google",
+      "community_name": "Src Google Tools",
       "id": "src_google_tools_gads_search_terms"
     },
     {
@@ -1374,7 +1374,7 @@
       "_origin": "ast",
       "community": 3,
       "norm_label": "gads_list_negatives",
-      "community_name": "Src Google",
+      "community_name": "Src Google Tools",
       "id": "src_google_tools_gads_list_negatives"
     },
     {
@@ -1385,7 +1385,7 @@
       "_origin": "ast",
       "community": 3,
       "norm_label": "gads_add_negative",
-      "community_name": "Src Google",
+      "community_name": "Src Google Tools",
       "id": "src_google_tools_gads_add_negative"
     },
     {
@@ -1396,7 +1396,7 @@
       "_origin": "ast",
       "community": 3,
       "norm_label": "gads_add_negative_keyword",
-      "community_name": "Src Google",
+      "community_name": "Src Google Tools",
       "id": "src_google_tools_gads_add_negative_keyword"
     },
     {
@@ -1407,7 +1407,7 @@
       "_origin": "ast",
       "community": 3,
       "norm_label": "gads_campaign_overlap",
-      "community_name": "Src Google",
+      "community_name": "Src Google Tools",
       "id": "src_google_tools_gads_campaign_overlap"
     },
     {
@@ -1420,7 +1420,7 @@
       "_origin": "ast",
       "community": 3,
       "norm_label": "patterngroup",
-      "community_name": "Src Google",
+      "community_name": "Src Google Tools",
       "id": "src_google_tools_patterngroup"
     },
     {
@@ -1432,7 +1432,7 @@
       "_origin": "ast",
       "community": 3,
       "norm_label": "tokenize()",
-      "community_name": "Src Google",
+      "community_name": "Src Google Tools",
       "id": "src_google_tools_tokenize"
     },
     {
@@ -1444,7 +1444,7 @@
       "_origin": "ast",
       "community": 3,
       "norm_label": "extractpatterns()",
-      "community_name": "Src Google",
+      "community_name": "Src Google Tools",
       "id": "src_google_tools_extractpatterns"
     },
     {
@@ -1455,7 +1455,7 @@
       "_origin": "ast",
       "community": 3,
       "norm_label": "gads_search_term_pattern_analysis",
-      "community_name": "Src Google",
+      "community_name": "Src Google Tools",
       "id": "src_google_tools_gads_search_term_pattern_analysis"
     },
     {
@@ -1467,7 +1467,7 @@
       "_origin": "ast",
       "community": 6,
       "norm_label": "setcampaignstatus()",
-      "community_name": "Src Meta",
+      "community_name": "Src Meta Tools",
       "id": "src_google_tools_setcampaignstatus"
     },
     {
@@ -1478,7 +1478,7 @@
       "_origin": "ast",
       "community": 3,
       "norm_label": "gads_pause_campaign",
-      "community_name": "Src Google",
+      "community_name": "Src Google Tools",
       "id": "src_google_tools_gads_pause_campaign"
     },
     {
@@ -1489,7 +1489,7 @@
       "_origin": "ast",
       "community": 3,
       "norm_label": "gads_resume_campaign",
-      "community_name": "Src Google",
+      "community_name": "Src Google Tools",
       "id": "src_google_tools_gads_resume_campaign"
     },
     {
@@ -1501,7 +1501,7 @@
       "_origin": "ast",
       "community": 3,
       "norm_label": "fmtamount()",
-      "community_name": "Src Google",
+      "community_name": "Src Google Tools",
       "id": "src_google_tools_fmtamount"
     },
     {
@@ -1513,7 +1513,7 @@
       "_origin": "ast",
       "community": 3,
       "norm_label": "canonical()",
-      "community_name": "Src Google",
+      "community_name": "Src Google Tools",
       "id": "src_google_tools_canonical"
     },
     {
@@ -1525,7 +1525,7 @@
       "_origin": "ast",
       "community": 3,
       "norm_label": "confirmphrase()",
-      "community_name": "Src Google",
+      "community_name": "Src Google Tools",
       "id": "src_google_tools_confirmphrase"
     },
     {
@@ -1538,7 +1538,7 @@
       "_origin": "ast",
       "community": 3,
       "norm_label": "budgetstate",
-      "community_name": "Src Google",
+      "community_name": "Src Google Tools",
       "id": "src_google_tools_budgetstate"
     },
     {
@@ -1550,7 +1550,7 @@
       "_origin": "ast",
       "community": 3,
       "norm_label": "fetchbudget()",
-      "community_name": "Src Google",
+      "community_name": "Src Google Tools",
       "id": "src_google_tools_fetchbudget"
     },
     {
@@ -1561,7 +1561,7 @@
       "_origin": "ast",
       "community": 3,
       "norm_label": "gads_update_campaign_budget",
-      "community_name": "Src Google",
+      "community_name": "Src Google Tools",
       "id": "src_google_tools_gads_update_campaign_budget"
     },
     {
@@ -1572,7 +1572,7 @@
       "_origin": "ast",
       "community": 5,
       "norm_label": "google_ads_tools",
-      "community_name": "Src Index.Ts",
+      "community_name": "Src Index",
       "id": "src_google_tools_google_ads_tools"
     },
     {
@@ -1583,7 +1583,7 @@
       "_origin": "ast",
       "community": 5,
       "norm_label": "index.ts",
-      "community_name": "Src Index.Ts",
+      "community_name": "Src Index",
       "id": "src_index"
     },
     {
@@ -1596,7 +1596,7 @@
       "_origin": "ast",
       "community": 5,
       "norm_label": "tooldef",
-      "community_name": "Src Index.Ts",
+      "community_name": "Src Index",
       "id": "src_index_tooldef"
     },
     {
@@ -1607,7 +1607,7 @@
       "_origin": "ast",
       "community": 5,
       "norm_label": "all_tools",
-      "community_name": "Src Index.Ts",
+      "community_name": "Src Index",
       "id": "src_index_all_tools"
     },
     {
@@ -1618,7 +1618,7 @@
       "_origin": "ast",
       "community": 5,
       "norm_label": "tool_by_name",
-      "community_name": "Src Index.Ts",
+      "community_name": "Src Index",
       "id": "src_index_tool_by_name"
     },
     {
@@ -1629,7 +1629,7 @@
       "_origin": "ast",
       "community": 5,
       "norm_label": "mutation_patterns",
-      "community_name": "Src Index.Ts",
+      "community_name": "Src Index",
       "id": "src_index_mutation_patterns"
     },
     {
@@ -1641,7 +1641,7 @@
       "_origin": "ast",
       "community": 5,
       "norm_label": "ismutationtool()",
-      "community_name": "Src Index.Ts",
+      "community_name": "Src Index",
       "id": "src_index_ismutationtool"
     },
     {
@@ -1652,7 +1652,7 @@
       "_origin": "ast",
       "community": 5,
       "norm_label": "server",
-      "community_name": "Src Index.Ts",
+      "community_name": "Src Index",
       "id": "src_index_server"
     },
     {
@@ -1663,7 +1663,7 @@
       "_origin": "ast",
       "community": 5,
       "norm_label": "static_resources",
-      "community_name": "Src Index.Ts",
+      "community_name": "Src Index",
       "id": "src_index_static_resources"
     },
     {
@@ -1674,7 +1674,7 @@
       "_origin": "ast",
       "community": 5,
       "norm_label": "resource_template",
-      "community_name": "Src Index.Ts",
+      "community_name": "Src Index",
       "id": "src_index_resource_template"
     },
     {
@@ -1686,7 +1686,7 @@
       "_origin": "ast",
       "community": 5,
       "norm_label": "readauditresource()",
-      "community_name": "Src Index.Ts",
+      "community_name": "Src Index",
       "id": "src_index_readauditresource"
     },
     {
@@ -1698,7 +1698,7 @@
       "_origin": "ast",
       "community": 5,
       "norm_label": "main()",
-      "community_name": "Src Index.Ts",
+      "community_name": "Src Index",
       "id": "src_index_main"
     },
     {
@@ -1709,7 +1709,7 @@
       "_origin": "ast",
       "community": 0,
       "norm_label": "mappers.ts",
-      "community_name": "Src Linkedin",
+      "community_name": "Src Linkedin Tools",
       "id": "src_lib_mappers"
     },
     {
@@ -1721,7 +1721,7 @@
       "_origin": "ast",
       "community": 0,
       "norm_label": "maplinkedinrecord()",
-      "community_name": "Src Linkedin",
+      "community_name": "Src Linkedin Tools",
       "id": "src_lib_mappers_maplinkedinrecord"
     },
     {
@@ -1733,7 +1733,7 @@
       "_origin": "ast",
       "community": 0,
       "norm_label": "extractmetaspend()",
-      "community_name": "Src Linkedin",
+      "community_name": "Src Linkedin Tools",
       "id": "src_lib_mappers_extractmetaspend"
     },
     {
@@ -1745,7 +1745,7 @@
       "_origin": "ast",
       "community": 0,
       "norm_label": "extractmetaconversions()",
-      "community_name": "Src Linkedin",
+      "community_name": "Src Linkedin Tools",
       "id": "src_lib_mappers_extractmetaconversions"
     },
     {
@@ -1757,7 +1757,7 @@
       "_origin": "ast",
       "community": 0,
       "norm_label": "mapmetarecord()",
-      "community_name": "Src Linkedin",
+      "community_name": "Src Linkedin Tools",
       "id": "src_lib_mappers_mapmetarecord"
     },
     {
@@ -1769,7 +1769,7 @@
       "_origin": "ast",
       "community": 0,
       "norm_label": "mapgoogleadsrecord()",
-      "community_name": "Src Linkedin",
+      "community_name": "Src Linkedin Tools",
       "id": "src_lib_mappers_mapgoogleadsrecord"
     },
     {
@@ -1780,7 +1780,7 @@
       "_origin": "ast",
       "community": 0,
       "norm_label": "metrics.ts",
-      "community_name": "Src Linkedin",
+      "community_name": "Src Linkedin Tools",
       "id": "src_lib_metrics"
     },
     {
@@ -1793,7 +1793,7 @@
       "_origin": "ast",
       "community": 0,
       "norm_label": "standardmetrics",
-      "community_name": "Src Linkedin",
+      "community_name": "Src Linkedin Tools",
       "id": "src_lib_metrics_standardmetrics"
     },
     {
@@ -1806,7 +1806,7 @@
       "_origin": "ast",
       "community": 0,
       "norm_label": "normalizedrecord",
-      "community_name": "Src Linkedin",
+      "community_name": "Src Linkedin Tools",
       "id": "src_lib_metrics_normalizedrecord"
     },
     {
@@ -1818,7 +1818,7 @@
       "_origin": "ast",
       "community": 0,
       "norm_label": "calculatestandardmetrics()",
-      "community_name": "Src Linkedin",
+      "community_name": "Src Linkedin Tools",
       "id": "src_lib_metrics_calculatestandardmetrics"
     },
     {
@@ -1829,7 +1829,7 @@
       "_origin": "ast",
       "community": 0,
       "norm_label": "demographic_type_map",
-      "community_name": "Src Linkedin",
+      "community_name": "Src Linkedin Tools",
       "id": "src_lib_metrics_demographic_type_map"
     },
     {
@@ -1840,7 +1840,7 @@
       "_origin": "ast",
       "community": 10,
       "norm_label": "linkedin/client.ts",
-      "community_name": "Src Linkedin 3",
+      "community_name": "Src Linkedin Client 2",
       "id": "src_linkedin_client"
     },
     {
@@ -1851,7 +1851,7 @@
       "_origin": "ast",
       "community": 10,
       "norm_label": "default_performance_metrics",
-      "community_name": "Src Linkedin 3",
+      "community_name": "Src Linkedin Client 2",
       "id": "src_linkedin_client_default_performance_metrics"
     },
     {
@@ -1862,7 +1862,7 @@
       "_origin": "ast",
       "community": 10,
       "norm_label": "default_creative_metrics",
-      "community_name": "Src Linkedin 3",
+      "community_name": "Src Linkedin Client 2",
       "id": "src_linkedin_client_default_creative_metrics"
     },
     {
@@ -1873,7 +1873,7 @@
       "_origin": "ast",
       "community": 10,
       "norm_label": "video_metrics",
-      "community_name": "Src Linkedin 3",
+      "community_name": "Src Linkedin Client 2",
       "id": "src_linkedin_client_video_metrics"
     },
     {
@@ -1884,7 +1884,7 @@
       "_origin": "ast",
       "community": 10,
       "norm_label": "lead_gen_metrics",
-      "community_name": "Src Linkedin 3",
+      "community_name": "Src Linkedin Client 2",
       "id": "src_linkedin_client_lead_gen_metrics"
     },
     {
@@ -1895,7 +1895,7 @@
       "_origin": "ast",
       "community": 10,
       "norm_label": "reach_metrics",
-      "community_name": "Src Linkedin 3",
+      "community_name": "Src Linkedin Client 2",
       "id": "src_linkedin_client_reach_metrics"
     },
     {
@@ -1908,7 +1908,7 @@
       "_origin": "ast",
       "community": 10,
       "norm_label": "requestoptions",
-      "community_name": "Src Linkedin 3",
+      "community_name": "Src Linkedin Client 2",
       "id": "src_linkedin_client_requestoptions"
     },
     {
@@ -1921,7 +1921,7 @@
       "_origin": "ast",
       "community": 10,
       "norm_label": "linkedinconfig",
-      "community_name": "Src Linkedin 3",
+      "community_name": "Src Linkedin Client 2",
       "id": "src_linkedin_client_linkedinconfig"
     },
     {
@@ -1934,7 +1934,7 @@
       "_origin": "ast",
       "community": 1,
       "norm_label": "linkedinclient",
-      "community_name": "Src Linkedin 2",
+      "community_name": "Src Linkedin Client",
       "id": "src_linkedin_client_linkedinclient"
     },
     {
@@ -1946,7 +1946,7 @@
       "_origin": "ast",
       "community": 1,
       "norm_label": ".constructor()",
-      "community_name": "Src Linkedin 2",
+      "community_name": "Src Linkedin Client",
       "id": "src_linkedin_client_linkedinclient_constructor"
     },
     {
@@ -1958,7 +1958,7 @@
       "_origin": "ast",
       "community": 1,
       "norm_label": ".request()",
-      "community_name": "Src Linkedin 2",
+      "community_name": "Src Linkedin Client",
       "id": "src_linkedin_client_linkedinclient_request"
     },
     {
@@ -1970,7 +1970,7 @@
       "_origin": "ast",
       "community": 1,
       "norm_label": ".sleep()",
-      "community_name": "Src Linkedin 2",
+      "community_name": "Src Linkedin Client",
       "id": "src_linkedin_client_linkedinclient_sleep"
     },
     {
@@ -1982,7 +1982,7 @@
       "_origin": "ast",
       "community": 1,
       "norm_label": ".get()",
-      "community_name": "Src Linkedin 2",
+      "community_name": "Src Linkedin Client",
       "id": "src_linkedin_client_linkedinclient_get"
     },
     {
@@ -1994,7 +1994,7 @@
       "_origin": "ast",
       "community": 1,
       "norm_label": ".post()",
-      "community_name": "Src Linkedin 2",
+      "community_name": "Src Linkedin Client",
       "id": "src_linkedin_client_linkedinclient_post"
     },
     {
@@ -2006,7 +2006,7 @@
       "_origin": "ast",
       "community": 1,
       "norm_label": ".put()",
-      "community_name": "Src Linkedin 2",
+      "community_name": "Src Linkedin Client",
       "id": "src_linkedin_client_linkedinclient_put"
     },
     {
@@ -2018,7 +2018,7 @@
       "_origin": "ast",
       "community": 1,
       "norm_label": ".delete()",
-      "community_name": "Src Linkedin 2",
+      "community_name": "Src Linkedin Client",
       "id": "src_linkedin_client_linkedinclient_delete"
     },
     {
@@ -2030,7 +2030,7 @@
       "_origin": "ast",
       "community": 1,
       "norm_label": ".formatdaterange()",
-      "community_name": "Src Linkedin 2",
+      "community_name": "Src Linkedin Client",
       "id": "src_linkedin_client_linkedinclient_formatdaterange"
     },
     {
@@ -2042,7 +2042,7 @@
       "_origin": "ast",
       "community": 1,
       "norm_label": ".parsedate()",
-      "community_name": "Src Linkedin 2",
+      "community_name": "Src Linkedin Client",
       "id": "src_linkedin_client_linkedinclient_parsedate"
     },
     {
@@ -2054,7 +2054,7 @@
       "_origin": "ast",
       "community": 1,
       "norm_label": ".listadaccounts()",
-      "community_name": "Src Linkedin 2",
+      "community_name": "Src Linkedin Client",
       "id": "src_linkedin_client_linkedinclient_listadaccounts"
     },
     {
@@ -2066,7 +2066,7 @@
       "_origin": "ast",
       "community": 1,
       "norm_label": ".getaccountdetails()",
-      "community_name": "Src Linkedin 2",
+      "community_name": "Src Linkedin Client",
       "id": "src_linkedin_client_linkedinclient_getaccountdetails"
     },
     {
@@ -2078,7 +2078,7 @@
       "_origin": "ast",
       "community": 1,
       "norm_label": ".listcampaigngroups()",
-      "community_name": "Src Linkedin 2",
+      "community_name": "Src Linkedin Client",
       "id": "src_linkedin_client_linkedinclient_listcampaigngroups"
     },
     {
@@ -2090,7 +2090,7 @@
       "_origin": "ast",
       "community": 1,
       "norm_label": ".getcampaigngroup()",
-      "community_name": "Src Linkedin 2",
+      "community_name": "Src Linkedin Client",
       "id": "src_linkedin_client_linkedinclient_getcampaigngroup"
     },
     {
@@ -2102,7 +2102,7 @@
       "_origin": "ast",
       "community": 1,
       "norm_label": ".createcampaigngroup()",
-      "community_name": "Src Linkedin 2",
+      "community_name": "Src Linkedin Client",
       "id": "src_linkedin_client_linkedinclient_createcampaigngroup"
     },
     {
@@ -2114,7 +2114,7 @@
       "_origin": "ast",
       "community": 1,
       "norm_label": ".updatecampaigngroup()",
-      "community_name": "Src Linkedin 2",
+      "community_name": "Src Linkedin Client",
       "id": "src_linkedin_client_linkedinclient_updatecampaigngroup"
     },
     {
@@ -2126,7 +2126,7 @@
       "_origin": "ast",
       "community": 1,
       "norm_label": ".deletecampaigngroup()",
-      "community_name": "Src Linkedin 2",
+      "community_name": "Src Linkedin Client",
       "id": "src_linkedin_client_linkedinclient_deletecampaigngroup"
     },
     {
@@ -2138,7 +2138,7 @@
       "_origin": "ast",
       "community": 1,
       "norm_label": ".listcampaigns()",
-      "community_name": "Src Linkedin 2",
+      "community_name": "Src Linkedin Client",
       "id": "src_linkedin_client_linkedinclient_listcampaigns"
     },
     {
@@ -2150,7 +2150,7 @@
       "_origin": "ast",
       "community": 1,
       "norm_label": ".getcampaign()",
-      "community_name": "Src Linkedin 2",
+      "community_name": "Src Linkedin Client",
       "id": "src_linkedin_client_linkedinclient_getcampaign"
     },
     {
@@ -2162,7 +2162,7 @@
       "_origin": "ast",
       "community": 1,
       "norm_label": ".getcampaignsbyids()",
-      "community_name": "Src Linkedin 2",
+      "community_name": "Src Linkedin Client",
       "id": "src_linkedin_client_linkedinclient_getcampaignsbyids"
     },
     {
@@ -2174,7 +2174,7 @@
       "_origin": "ast",
       "community": 1,
       "norm_label": ".createcampaign()",
-      "community_name": "Src Linkedin 2",
+      "community_name": "Src Linkedin Client",
       "id": "src_linkedin_client_linkedinclient_createcampaign"
     },
     {
@@ -2186,7 +2186,7 @@
       "_origin": "ast",
       "community": 1,
       "norm_label": ".updatecampaign()",
-      "community_name": "Src Linkedin 2",
+      "community_name": "Src Linkedin Client",
       "id": "src_linkedin_client_linkedinclient_updatecampaign"
     },
     {
@@ -2198,7 +2198,7 @@
       "_origin": "ast",
       "community": 1,
       "norm_label": ".deletecampaign()",
-      "community_name": "Src Linkedin 2",
+      "community_name": "Src Linkedin Client",
       "id": "src_linkedin_client_linkedinclient_deletecampaign"
     },
     {
@@ -2210,7 +2210,7 @@
       "_origin": "ast",
       "community": 1,
       "norm_label": ".listcreatives()",
-      "community_name": "Src Linkedin 2",
+      "community_name": "Src Linkedin Client",
       "id": "src_linkedin_client_linkedinclient_listcreatives"
     },
     {
@@ -2222,7 +2222,7 @@
       "_origin": "ast",
       "community": 1,
       "norm_label": ".getcreative()",
-      "community_name": "Src Linkedin 2",
+      "community_name": "Src Linkedin Client",
       "id": "src_linkedin_client_linkedinclient_getcreative"
     },
     {
@@ -2234,7 +2234,7 @@
       "_origin": "ast",
       "community": 1,
       "norm_label": ".getcreativesbyids()",
-      "community_name": "Src Linkedin 2",
+      "community_name": "Src Linkedin Client",
       "id": "src_linkedin_client_linkedinclient_getcreativesbyids"
     },
     {
@@ -2246,7 +2246,7 @@
       "_origin": "ast",
       "community": 1,
       "norm_label": ".createcreative()",
-      "community_name": "Src Linkedin 2",
+      "community_name": "Src Linkedin Client",
       "id": "src_linkedin_client_linkedinclient_createcreative"
     },
     {
@@ -2258,7 +2258,7 @@
       "_origin": "ast",
       "community": 1,
       "norm_label": ".createinlinecreative()",
-      "community_name": "Src Linkedin 2",
+      "community_name": "Src Linkedin Client",
       "id": "src_linkedin_client_linkedinclient_createinlinecreative"
     },
     {
@@ -2270,7 +2270,7 @@
       "_origin": "ast",
       "community": 1,
       "norm_label": ".updatecreative()",
-      "community_name": "Src Linkedin 2",
+      "community_name": "Src Linkedin Client",
       "id": "src_linkedin_client_linkedinclient_updatecreative"
     },
     {
@@ -2282,7 +2282,7 @@
       "_origin": "ast",
       "community": 1,
       "norm_label": ".getpost()",
-      "community_name": "Src Linkedin 2",
+      "community_name": "Src Linkedin Client",
       "id": "src_linkedin_client_linkedinclient_getpost"
     },
     {
@@ -2294,7 +2294,7 @@
       "_origin": "ast",
       "community": 1,
       "norm_label": ".getimage()",
-      "community_name": "Src Linkedin 2",
+      "community_name": "Src Linkedin Client",
       "id": "src_linkedin_client_linkedinclient_getimage"
     },
     {
@@ -2306,7 +2306,7 @@
       "_origin": "ast",
       "community": 1,
       "norm_label": ".getimagesbatch()",
-      "community_name": "Src Linkedin 2",
+      "community_name": "Src Linkedin Client",
       "id": "src_linkedin_client_linkedinclient_getimagesbatch"
     },
     {
@@ -2318,7 +2318,7 @@
       "_origin": "ast",
       "community": 1,
       "norm_label": ".getanalytics()",
-      "community_name": "Src Linkedin 2",
+      "community_name": "Src Linkedin Client",
       "id": "src_linkedin_client_linkedinclient_getanalytics"
     },
     {
@@ -2330,7 +2330,7 @@
       "_origin": "ast",
       "community": 1,
       "norm_label": ".getcampaignperformance()",
-      "community_name": "Src Linkedin 2",
+      "community_name": "Src Linkedin Client",
       "id": "src_linkedin_client_linkedinclient_getcampaignperformance"
     },
     {
@@ -2342,7 +2342,7 @@
       "_origin": "ast",
       "community": 1,
       "norm_label": ".getcreativeperformance()",
-      "community_name": "Src Linkedin 2",
+      "community_name": "Src Linkedin Client",
       "id": "src_linkedin_client_linkedinclient_getcreativeperformance"
     },
     {
@@ -2354,7 +2354,7 @@
       "_origin": "ast",
       "community": 1,
       "norm_label": ".getcampaigngroupperformance()",
-      "community_name": "Src Linkedin 2",
+      "community_name": "Src Linkedin Client",
       "id": "src_linkedin_client_linkedinclient_getcampaigngroupperformance"
     },
     {
@@ -2366,7 +2366,7 @@
       "_origin": "ast",
       "community": 1,
       "norm_label": ".getaudiencedemographics()",
-      "community_name": "Src Linkedin 2",
+      "community_name": "Src Linkedin Client",
       "id": "src_linkedin_client_linkedinclient_getaudiencedemographics"
     },
     {
@@ -2378,7 +2378,7 @@
       "_origin": "ast",
       "community": 1,
       "norm_label": ".getaudiencereach()",
-      "community_name": "Src Linkedin 2",
+      "community_name": "Src Linkedin Client",
       "id": "src_linkedin_client_linkedinclient_getaudiencereach"
     },
     {
@@ -2390,7 +2390,7 @@
       "_origin": "ast",
       "community": 1,
       "norm_label": ".getleadgenperformance()",
-      "community_name": "Src Linkedin 2",
+      "community_name": "Src Linkedin Client",
       "id": "src_linkedin_client_linkedinclient_getleadgenperformance"
     },
     {
@@ -2402,7 +2402,7 @@
       "_origin": "ast",
       "community": 1,
       "norm_label": ".getconversionperformance()",
-      "community_name": "Src Linkedin 2",
+      "community_name": "Src Linkedin Client",
       "id": "src_linkedin_client_linkedinclient_getconversionperformance"
     },
     {
@@ -2414,7 +2414,7 @@
       "_origin": "ast",
       "community": 1,
       "norm_label": ".listconversions()",
-      "community_name": "Src Linkedin 2",
+      "community_name": "Src Linkedin Client",
       "id": "src_linkedin_client_linkedinclient_listconversions"
     },
     {
@@ -2426,7 +2426,7 @@
       "_origin": "ast",
       "community": 1,
       "norm_label": ".listleadforms()",
-      "community_name": "Src Linkedin 2",
+      "community_name": "Src Linkedin Client",
       "id": "src_linkedin_client_linkedinclient_listleadforms"
     },
     {
@@ -2438,7 +2438,7 @@
       "_origin": "ast",
       "community": 1,
       "norm_label": ".listsavedaudiences()",
-      "community_name": "Src Linkedin 2",
+      "community_name": "Src Linkedin Client",
       "id": "src_linkedin_client_linkedinclient_listsavedaudiences"
     },
     {
@@ -2450,7 +2450,7 @@
       "_origin": "ast",
       "community": 1,
       "norm_label": ".uploadimage()",
-      "community_name": "Src Linkedin 2",
+      "community_name": "Src Linkedin Client",
       "id": "src_linkedin_client_linkedinclient_uploadimage"
     },
     {
@@ -2461,7 +2461,7 @@
       "_origin": "ast",
       "community": 5,
       "norm_label": "linkedin/config.ts",
-      "community_name": "Src Index.Ts",
+      "community_name": "Src Index",
       "id": "src_linkedin_config"
     },
     {
@@ -2474,7 +2474,7 @@
       "_origin": "ast",
       "community": 5,
       "norm_label": "linkedinconfig",
-      "community_name": "Src Index.Ts",
+      "community_name": "Src Index",
       "id": "src_linkedin_config_linkedinconfig"
     },
     {
@@ -2486,7 +2486,7 @@
       "_origin": "ast",
       "community": 0,
       "norm_label": "getlinkedinconfig()",
-      "community_name": "Src Linkedin",
+      "community_name": "Src Linkedin Tools",
       "id": "src_linkedin_config_getlinkedinconfig"
     },
     {
@@ -2498,7 +2498,7 @@
       "_origin": "ast",
       "community": 5,
       "norm_label": "islinkedinconfigured()",
-      "community_name": "Src Index.Ts",
+      "community_name": "Src Index",
       "id": "src_linkedin_config_islinkedinconfigured"
     },
     {
@@ -2509,7 +2509,7 @@
       "_origin": "ast",
       "community": 0,
       "norm_label": "linkedin/tools.ts",
-      "community_name": "Src Linkedin",
+      "community_name": "Src Linkedin Tools",
       "id": "src_linkedin_tools"
     },
     {
@@ -2521,7 +2521,7 @@
       "_origin": "ast",
       "community": 0,
       "norm_label": "client()",
-      "community_name": "Src Linkedin",
+      "community_name": "Src Linkedin Tools",
       "id": "src_linkedin_tools_client"
     },
     {
@@ -2532,7 +2532,7 @@
       "_origin": "ast",
       "community": 0,
       "norm_label": "accountid",
-      "community_name": "Src Linkedin",
+      "community_name": "Src Linkedin Tools",
       "id": "src_linkedin_tools_accountid"
     },
     {
@@ -2543,7 +2543,7 @@
       "_origin": "ast",
       "community": 0,
       "norm_label": "linkedin_ads_list_accounts",
-      "community_name": "Src Linkedin",
+      "community_name": "Src Linkedin Tools",
       "id": "src_linkedin_tools_linkedin_ads_list_accounts"
     },
     {
@@ -2554,7 +2554,7 @@
       "_origin": "ast",
       "community": 0,
       "norm_label": "linkedin_ads_get_account",
-      "community_name": "Src Linkedin",
+      "community_name": "Src Linkedin Tools",
       "id": "src_linkedin_tools_linkedin_ads_get_account"
     },
     {
@@ -2565,7 +2565,7 @@
       "_origin": "ast",
       "community": 0,
       "norm_label": "linkedin_ads_list_campaign_groups",
-      "community_name": "Src Linkedin",
+      "community_name": "Src Linkedin Tools",
       "id": "src_linkedin_tools_linkedin_ads_list_campaign_groups"
     },
     {
@@ -2576,7 +2576,7 @@
       "_origin": "ast",
       "community": 0,
       "norm_label": "linkedin_ads_get_campaign_group",
-      "community_name": "Src Linkedin",
+      "community_name": "Src Linkedin Tools",
       "id": "src_linkedin_tools_linkedin_ads_get_campaign_group"
     },
     {
@@ -2587,7 +2587,7 @@
       "_origin": "ast",
       "community": 0,
       "norm_label": "linkedin_ads_create_campaign_group",
-      "community_name": "Src Linkedin",
+      "community_name": "Src Linkedin Tools",
       "id": "src_linkedin_tools_linkedin_ads_create_campaign_group"
     },
     {
@@ -2598,7 +2598,7 @@
       "_origin": "ast",
       "community": 0,
       "norm_label": "linkedin_ads_update_campaign_group",
-      "community_name": "Src Linkedin",
+      "community_name": "Src Linkedin Tools",
       "id": "src_linkedin_tools_linkedin_ads_update_campaign_group"
     },
     {
@@ -2609,7 +2609,7 @@
       "_origin": "ast",
       "community": 0,
       "norm_label": "linkedin_ads_delete_campaign_group",
-      "community_name": "Src Linkedin",
+      "community_name": "Src Linkedin Tools",
       "id": "src_linkedin_tools_linkedin_ads_delete_campaign_group"
     },
     {
@@ -2620,7 +2620,7 @@
       "_origin": "ast",
       "community": 0,
       "norm_label": "linkedin_ads_list_campaigns",
-      "community_name": "Src Linkedin",
+      "community_name": "Src Linkedin Tools",
       "id": "src_linkedin_tools_linkedin_ads_list_campaigns"
     },
     {
@@ -2631,7 +2631,7 @@
       "_origin": "ast",
       "community": 0,
       "norm_label": "linkedin_ads_get_campaign",
-      "community_name": "Src Linkedin",
+      "community_name": "Src Linkedin Tools",
       "id": "src_linkedin_tools_linkedin_ads_get_campaign"
     },
     {
@@ -2642,7 +2642,7 @@
       "_origin": "ast",
       "community": 0,
       "norm_label": "linkedin_ads_create_campaign",
-      "community_name": "Src Linkedin",
+      "community_name": "Src Linkedin Tools",
       "id": "src_linkedin_tools_linkedin_ads_create_campaign"
     },
     {
@@ -2653,7 +2653,7 @@
       "_origin": "ast",
       "community": 0,
       "norm_label": "linkedin_ads_update_campaign",
-      "community_name": "Src Linkedin",
+      "community_name": "Src Linkedin Tools",
       "id": "src_linkedin_tools_linkedin_ads_update_campaign"
     },
     {
@@ -2664,7 +2664,7 @@
       "_origin": "ast",
       "community": 0,
       "norm_label": "linkedin_ads_delete_campaign",
-      "community_name": "Src Linkedin",
+      "community_name": "Src Linkedin Tools",
       "id": "src_linkedin_tools_linkedin_ads_delete_campaign"
     },
     {
@@ -2675,7 +2675,7 @@
       "_origin": "ast",
       "community": 0,
       "norm_label": "linkedin_ads_get_campaign_performance",
-      "community_name": "Src Linkedin",
+      "community_name": "Src Linkedin Tools",
       "id": "src_linkedin_tools_linkedin_ads_get_campaign_performance"
     },
     {
@@ -2686,7 +2686,7 @@
       "_origin": "ast",
       "community": 0,
       "norm_label": "linkedin_ads_list_creatives",
-      "community_name": "Src Linkedin",
+      "community_name": "Src Linkedin Tools",
       "id": "src_linkedin_tools_linkedin_ads_list_creatives"
     },
     {
@@ -2697,7 +2697,7 @@
       "_origin": "ast",
       "community": 0,
       "norm_label": "linkedin_ads_get_creative",
-      "community_name": "Src Linkedin",
+      "community_name": "Src Linkedin Tools",
       "id": "src_linkedin_tools_linkedin_ads_get_creative"
     },
     {
@@ -2708,7 +2708,7 @@
       "_origin": "ast",
       "community": 0,
       "norm_label": "linkedin_ads_create_creative",
-      "community_name": "Src Linkedin",
+      "community_name": "Src Linkedin Tools",
       "id": "src_linkedin_tools_linkedin_ads_create_creative"
     },
     {
@@ -2719,7 +2719,7 @@
       "_origin": "ast",
       "community": 0,
       "norm_label": "linkedin_ads_create_inline_ad",
-      "community_name": "Src Linkedin",
+      "community_name": "Src Linkedin Tools",
       "id": "src_linkedin_tools_linkedin_ads_create_inline_ad"
     },
     {
@@ -2730,7 +2730,7 @@
       "_origin": "ast",
       "community": 0,
       "norm_label": "linkedin_ads_update_creative_status",
-      "community_name": "Src Linkedin",
+      "community_name": "Src Linkedin Tools",
       "id": "src_linkedin_tools_linkedin_ads_update_creative_status"
     },
     {
@@ -2741,7 +2741,7 @@
       "_origin": "ast",
       "community": 0,
       "norm_label": "linkedin_ads_get_creative_performance",
-      "community_name": "Src Linkedin",
+      "community_name": "Src Linkedin Tools",
       "id": "src_linkedin_tools_linkedin_ads_get_creative_performance"
     },
     {
@@ -2752,7 +2752,7 @@
       "_origin": "ast",
       "community": 0,
       "norm_label": "linkedin_ads_upload_image",
-      "community_name": "Src Linkedin",
+      "community_name": "Src Linkedin Tools",
       "id": "src_linkedin_tools_linkedin_ads_upload_image"
     },
     {
@@ -2763,7 +2763,7 @@
       "_origin": "ast",
       "community": 0,
       "norm_label": "linkedin_ads_get_analytics",
-      "community_name": "Src Linkedin",
+      "community_name": "Src Linkedin Tools",
       "id": "src_linkedin_tools_linkedin_ads_get_analytics"
     },
     {
@@ -2774,7 +2774,7 @@
       "_origin": "ast",
       "community": 0,
       "norm_label": "linkedin_ads_get_campaign_stats",
-      "community_name": "Src Linkedin",
+      "community_name": "Src Linkedin Tools",
       "id": "src_linkedin_tools_linkedin_ads_get_campaign_stats"
     },
     {
@@ -2785,7 +2785,7 @@
       "_origin": "ast",
       "community": 0,
       "norm_label": "linkedin_ads_get_audience_demographics",
-      "community_name": "Src Linkedin",
+      "community_name": "Src Linkedin Tools",
       "id": "src_linkedin_tools_linkedin_ads_get_audience_demographics"
     },
     {
@@ -2796,7 +2796,7 @@
       "_origin": "ast",
       "community": 0,
       "norm_label": "linkedin_ads_get_audience_reach",
-      "community_name": "Src Linkedin",
+      "community_name": "Src Linkedin Tools",
       "id": "src_linkedin_tools_linkedin_ads_get_audience_reach"
     },
     {
@@ -2807,7 +2807,7 @@
       "_origin": "ast",
       "community": 0,
       "norm_label": "linkedin_ads_list_saved_audiences",
-      "community_name": "Src Linkedin",
+      "community_name": "Src Linkedin Tools",
       "id": "src_linkedin_tools_linkedin_ads_list_saved_audiences"
     },
     {
@@ -2818,7 +2818,7 @@
       "_origin": "ast",
       "community": 0,
       "norm_label": "linkedin_ads_get_conversion_performance",
-      "community_name": "Src Linkedin",
+      "community_name": "Src Linkedin Tools",
       "id": "src_linkedin_tools_linkedin_ads_get_conversion_performance"
     },
     {
@@ -2829,7 +2829,7 @@
       "_origin": "ast",
       "community": 0,
       "norm_label": "linkedin_ads_list_conversions",
-      "community_name": "Src Linkedin",
+      "community_name": "Src Linkedin Tools",
       "id": "src_linkedin_tools_linkedin_ads_list_conversions"
     },
     {
@@ -2840,7 +2840,7 @@
       "_origin": "ast",
       "community": 0,
       "norm_label": "linkedin_ads_get_lead_gen_performance",
-      "community_name": "Src Linkedin",
+      "community_name": "Src Linkedin Tools",
       "id": "src_linkedin_tools_linkedin_ads_get_lead_gen_performance"
     },
     {
@@ -2851,7 +2851,7 @@
       "_origin": "ast",
       "community": 0,
       "norm_label": "linkedin_ads_list_lead_forms",
-      "community_name": "Src Linkedin",
+      "community_name": "Src Linkedin Tools",
       "id": "src_linkedin_tools_linkedin_ads_list_lead_forms"
     },
     {
@@ -2862,7 +2862,7 @@
       "_origin": "ast",
       "community": 0,
       "norm_label": "linkedin_ads_compare_performance",
-      "community_name": "Src Linkedin",
+      "community_name": "Src Linkedin Tools",
       "id": "src_linkedin_tools_linkedin_ads_compare_performance"
     },
     {
@@ -2873,7 +2873,7 @@
       "_origin": "ast",
       "community": 0,
       "norm_label": "linkedin_ads_get_daily_trends",
-      "community_name": "Src Linkedin",
+      "community_name": "Src Linkedin Tools",
       "id": "src_linkedin_tools_linkedin_ads_get_daily_trends"
     },
     {
@@ -2884,7 +2884,7 @@
       "_origin": "ast",
       "community": 5,
       "norm_label": "linkedin_tools",
-      "community_name": "Src Index.Ts",
+      "community_name": "Src Index",
       "id": "src_linkedin_tools_linkedin_tools"
     },
     {
@@ -2895,7 +2895,7 @@
       "_origin": "ast",
       "community": 2,
       "norm_label": "meta/client.ts",
-      "community_name": "Src Config.Ts",
+      "community_name": "Src Config",
       "id": "src_meta_client"
     },
     {
@@ -2908,7 +2908,7 @@
       "_origin": "ast",
       "community": 2,
       "norm_label": "metaerror",
-      "community_name": "Src Config.Ts",
+      "community_name": "Src Config",
       "id": "src_meta_client_metaerror"
     },
     {
@@ -2921,7 +2921,7 @@
       "_origin": "ast",
       "community": 12,
       "norm_label": "metaclienterror",
-      "community_name": "Tests Meta Client.Test.Ts",
+      "community_name": "Tests Meta Client Test",
       "id": "src_meta_client_metaclienterror"
     },
     {
@@ -2933,7 +2933,7 @@
       "_origin": "ast",
       "community": 12,
       "norm_label": ".constructor()",
-      "community_name": "Tests Meta Client.Test.Ts",
+      "community_name": "Tests Meta Client Test",
       "id": "src_meta_client_metaclienterror_constructor"
     },
     {
@@ -2946,7 +2946,7 @@
       "_origin": "ast",
       "community": 2,
       "norm_label": "metaclient",
-      "community_name": "Src Config.Ts",
+      "community_name": "Src Config",
       "id": "src_meta_client_metaclient"
     },
     {
@@ -2958,7 +2958,7 @@
       "_origin": "ast",
       "community": 2,
       "norm_label": ".constructor()",
-      "community_name": "Src Config.Ts",
+      "community_name": "Src Config",
       "id": "src_meta_client_metaclient_constructor"
     },
     {
@@ -2970,7 +2970,7 @@
       "_origin": "ast",
       "community": 2,
       "norm_label": ".accountid()",
-      "community_name": "Src Config.Ts",
+      "community_name": "Src Config",
       "id": "src_meta_client_metaclient_accountid"
     },
     {
@@ -2982,7 +2982,7 @@
       "_origin": "ast",
       "community": 2,
       "norm_label": ".currency()",
-      "community_name": "Src Config.Ts",
+      "community_name": "Src Config",
       "id": "src_meta_client_metaclient_currency"
     },
     {
@@ -2994,7 +2994,7 @@
       "_origin": "ast",
       "community": 2,
       "norm_label": ".currencysymbol()",
-      "community_name": "Src Config.Ts",
+      "community_name": "Src Config",
       "id": "src_meta_client_metaclient_currencysymbol"
     },
     {
@@ -3006,7 +3006,7 @@
       "_origin": "ast",
       "community": 2,
       "norm_label": ".url()",
-      "community_name": "Src Config.Ts",
+      "community_name": "Src Config",
       "id": "src_meta_client_metaclient_url"
     },
     {
@@ -3018,7 +3018,7 @@
       "_origin": "ast",
       "community": 2,
       "norm_label": ".sleep()",
-      "community_name": "Src Config.Ts",
+      "community_name": "Src Config",
       "id": "src_meta_client_metaclient_sleep"
     },
     {
@@ -3030,7 +3030,7 @@
       "_origin": "ast",
       "community": 2,
       "norm_label": ".request()",
-      "community_name": "Src Config.Ts",
+      "community_name": "Src Config",
       "id": "src_meta_client_metaclient_request"
     },
     {
@@ -3042,7 +3042,7 @@
       "_origin": "ast",
       "community": 2,
       "norm_label": ".get()",
-      "community_name": "Src Config.Ts",
+      "community_name": "Src Config",
       "id": "src_meta_client_metaclient_get"
     },
     {
@@ -3054,7 +3054,7 @@
       "_origin": "ast",
       "community": 2,
       "norm_label": ".post()",
-      "community_name": "Src Config.Ts",
+      "community_name": "Src Config",
       "id": "src_meta_client_metaclient_post"
     },
     {
@@ -3066,7 +3066,7 @@
       "_origin": "ast",
       "community": 2,
       "norm_label": ".getpaginated()",
-      "community_name": "Src Config.Ts",
+      "community_name": "Src Config",
       "id": "src_meta_client_metaclient_getpaginated"
     },
     {
@@ -3077,7 +3077,7 @@
       "_origin": "ast",
       "community": 6,
       "norm_label": "meta/tools.ts",
-      "community_name": "Src Meta",
+      "community_name": "Src Meta Tools",
       "id": "src_meta_tools"
     },
     {
@@ -3088,7 +3088,7 @@
       "_origin": "ast",
       "community": 6,
       "norm_label": "brandschema",
-      "community_name": "Src Meta",
+      "community_name": "Src Meta Tools",
       "id": "src_meta_tools_brandschema"
     },
     {
@@ -3100,7 +3100,7 @@
       "_origin": "ast",
       "community": 6,
       "norm_label": "clientfor()",
-      "community_name": "Src Meta",
+      "community_name": "Src Meta Tools",
       "id": "src_meta_tools_clientfor"
     },
     {
@@ -3112,7 +3112,7 @@
       "_origin": "ast",
       "community": 6,
       "norm_label": "leadcount()",
-      "community_name": "Src Meta",
+      "community_name": "Src Meta Tools",
       "id": "src_meta_tools_leadcount"
     },
     {
@@ -3123,7 +3123,7 @@
       "_origin": "ast",
       "community": 6,
       "norm_label": "meta_list_accounts",
-      "community_name": "Src Meta",
+      "community_name": "Src Meta Tools",
       "id": "src_meta_tools_meta_list_accounts"
     },
     {
@@ -3134,7 +3134,7 @@
       "_origin": "ast",
       "community": 6,
       "norm_label": "meta_list_campaigns",
-      "community_name": "Src Meta",
+      "community_name": "Src Meta Tools",
       "id": "src_meta_tools_meta_list_campaigns"
     },
     {
@@ -3145,7 +3145,7 @@
       "_origin": "ast",
       "community": 6,
       "norm_label": "meta_insights",
-      "community_name": "Src Meta",
+      "community_name": "Src Meta Tools",
       "id": "src_meta_tools_meta_insights"
     },
     {
@@ -3156,7 +3156,7 @@
       "_origin": "ast",
       "community": 6,
       "norm_label": "meta_get_creative",
-      "community_name": "Src Meta",
+      "community_name": "Src Meta Tools",
       "id": "src_meta_tools_meta_get_creative"
     },
     {
@@ -3167,7 +3167,7 @@
       "_origin": "ast",
       "community": 6,
       "norm_label": "meta_download_creatives",
-      "community_name": "Src Meta",
+      "community_name": "Src Meta Tools",
       "id": "src_meta_tools_meta_download_creatives"
     },
     {
@@ -3179,7 +3179,7 @@
       "_origin": "ast",
       "community": 6,
       "norm_label": "budgettomicro()",
-      "community_name": "Src Meta",
+      "community_name": "Src Meta Tools",
       "id": "src_meta_tools_budgettomicro"
     },
     {
@@ -3190,7 +3190,7 @@
       "_origin": "ast",
       "community": 6,
       "norm_label": "meta_list_adsets",
-      "community_name": "Src Meta",
+      "community_name": "Src Meta Tools",
       "id": "src_meta_tools_meta_list_adsets"
     },
     {
@@ -3201,7 +3201,7 @@
       "_origin": "ast",
       "community": 6,
       "norm_label": "meta_list_ads",
-      "community_name": "Src Meta",
+      "community_name": "Src Meta Tools",
       "id": "src_meta_tools_meta_list_ads"
     },
     {
@@ -3212,7 +3212,7 @@
       "_origin": "ast",
       "community": 6,
       "norm_label": "meta_get_ad_account",
-      "community_name": "Src Meta",
+      "community_name": "Src Meta Tools",
       "id": "src_meta_tools_meta_get_ad_account"
     },
     {
@@ -3223,7 +3223,7 @@
       "_origin": "ast",
       "community": 6,
       "norm_label": "meta_get_pages",
-      "community_name": "Src Meta",
+      "community_name": "Src Meta Tools",
       "id": "src_meta_tools_meta_get_pages"
     },
     {
@@ -3234,7 +3234,7 @@
       "_origin": "ast",
       "community": 6,
       "norm_label": "meta_create_campaign",
-      "community_name": "Src Meta",
+      "community_name": "Src Meta Tools",
       "id": "src_meta_tools_meta_create_campaign"
     },
     {
@@ -3245,7 +3245,7 @@
       "_origin": "ast",
       "community": 6,
       "norm_label": "meta_update_campaign",
-      "community_name": "Src Meta",
+      "community_name": "Src Meta Tools",
       "id": "src_meta_tools_meta_update_campaign"
     },
     {
@@ -3256,7 +3256,7 @@
       "_origin": "ast",
       "community": 6,
       "norm_label": "meta_create_adset",
-      "community_name": "Src Meta",
+      "community_name": "Src Meta Tools",
       "id": "src_meta_tools_meta_create_adset"
     },
     {
@@ -3267,7 +3267,7 @@
       "_origin": "ast",
       "community": 6,
       "norm_label": "meta_update_adset",
-      "community_name": "Src Meta",
+      "community_name": "Src Meta Tools",
       "id": "src_meta_tools_meta_update_adset"
     },
     {
@@ -3278,7 +3278,7 @@
       "_origin": "ast",
       "community": 6,
       "norm_label": "meta_create_ad",
-      "community_name": "Src Meta",
+      "community_name": "Src Meta Tools",
       "id": "src_meta_tools_meta_create_ad"
     },
     {
@@ -3289,7 +3289,7 @@
       "_origin": "ast",
       "community": 6,
       "norm_label": "meta_update_ad",
-      "community_name": "Src Meta",
+      "community_name": "Src Meta Tools",
       "id": "src_meta_tools_meta_update_ad"
     },
     {
@@ -3300,7 +3300,7 @@
       "_origin": "ast",
       "community": 5,
       "norm_label": "meta_tools",
-      "community_name": "Src Index.Ts",
+      "community_name": "Src Index",
       "id": "src_meta_tools_meta_tools"
     },
     {
@@ -3311,7 +3311,7 @@
       "_origin": "ast",
       "community": 6,
       "norm_label": "safety.ts",
-      "community_name": "Src Meta",
+      "community_name": "Src Meta Tools",
       "id": "src_safety"
     },
     {
@@ -3324,7 +3324,7 @@
       "_origin": "ast",
       "community": 6,
       "norm_label": "executegate",
-      "community_name": "Src Meta",
+      "community_name": "Src Meta Tools",
       "id": "src_safety_executegate"
     },
     {
@@ -3336,7 +3336,7 @@
       "_origin": "ast",
       "community": 6,
       "norm_label": "shouldexecute()",
-      "community_name": "Src Meta",
+      "community_name": "Src Meta Tools",
       "id": "src_safety_shouldexecute"
     },
     {
@@ -3348,7 +3348,7 @@
       "_origin": "ast",
       "community": 6,
       "norm_label": "isdryrun()",
-      "community_name": "Src Meta",
+      "community_name": "Src Meta Tools",
       "id": "src_safety_isdryrun"
     },
     {
@@ -3361,7 +3361,7 @@
       "_origin": "ast",
       "community": 6,
       "norm_label": "dryrunresult",
-      "community_name": "Src Meta",
+      "community_name": "Src Meta Tools",
       "id": "src_safety_dryrunresult"
     },
     {
@@ -3372,7 +3372,7 @@
       "_origin": "ast",
       "community": 5,
       "norm_label": "turso.ts",
-      "community_name": "Src Index.Ts",
+      "community_name": "Src Index",
       "id": "src_turso"
     },
     {
@@ -3384,7 +3384,7 @@
       "_origin": "ast",
       "community": 5,
       "norm_label": "gettursoclient()",
-      "community_name": "Src Index.Ts",
+      "community_name": "Src Index",
       "id": "src_turso_gettursoclient"
     },
     {
@@ -3396,7 +3396,7 @@
       "_origin": "ast",
       "community": 5,
       "norm_label": "istursoconfigured()",
-      "community_name": "Src Index.Ts",
+      "community_name": "Src Index",
       "id": "src_turso_istursoconfigured"
     },
     {
@@ -3407,7 +3407,7 @@
       "_origin": "ast",
       "community": 14,
       "norm_label": "_setup.ts",
-      "community_name": "Tests  Setup.Ts",
+      "community_name": "Tests Setup",
       "id": "tests_setup"
     },
     {
@@ -3419,7 +3419,7 @@
       "_origin": "ast",
       "community": 14,
       "norm_label": "d()",
-      "community_name": "Tests  Setup.Ts",
+      "community_name": "Tests Setup",
       "id": "tests_setup_d"
     },
     {
@@ -3430,7 +3430,7 @@
       "_origin": "ast",
       "community": 5,
       "norm_label": "audit.test.ts",
-      "community_name": "Src Index.Ts",
+      "community_name": "Src Index",
       "id": "tests_audit_test"
     },
     {
@@ -3441,7 +3441,7 @@
       "_origin": "ast",
       "community": 2,
       "norm_label": "config.test.ts",
-      "community_name": "Src Config.Ts",
+      "community_name": "Src Config",
       "id": "tests_config_test"
     },
     {
@@ -3452,7 +3452,7 @@
       "_origin": "ast",
       "community": 13,
       "norm_label": "gads-mutations.test.ts",
-      "community_name": "Tests Gads Mutations.Test.Ts",
+      "community_name": "Tests Gads Mutations Test",
       "id": "tests_gads_mutations_test"
     },
     {
@@ -3465,7 +3465,7 @@
       "_origin": "ast",
       "community": 13,
       "norm_label": "mockclient",
-      "community_name": "Tests Gads Mutations.Test.Ts",
+      "community_name": "Tests Gads Mutations Test",
       "id": "tests_gads_mutations_test_mockclient"
     },
     {
@@ -3477,7 +3477,7 @@
       "_origin": "ast",
       "community": 13,
       "norm_label": ".setresponse()",
-      "community_name": "Tests Gads Mutations.Test.Ts",
+      "community_name": "Tests Gads Mutations Test",
       "id": "tests_gads_mutations_test_mockclient_setresponse"
     },
     {
@@ -3489,7 +3489,7 @@
       "_origin": "ast",
       "community": 13,
       "norm_label": ".query()",
-      "community_name": "Tests Gads Mutations.Test.Ts",
+      "community_name": "Tests Gads Mutations Test",
       "id": "tests_gads_mutations_test_mockclient_query"
     },
     {
@@ -3501,7 +3501,7 @@
       "_origin": "ast",
       "community": 13,
       "norm_label": ".mutate()",
-      "community_name": "Tests Gads Mutations.Test.Ts",
+      "community_name": "Tests Gads Mutations Test",
       "id": "tests_gads_mutations_test_mockclient_mutate"
     },
     {
@@ -3513,7 +3513,7 @@
       "_origin": "ast",
       "community": 13,
       "norm_label": "fmtamount()",
-      "community_name": "Tests Gads Mutations.Test.Ts",
+      "community_name": "Tests Gads Mutations Test",
       "id": "tests_gads_mutations_test_fmtamount"
     },
     {
@@ -3525,7 +3525,7 @@
       "_origin": "ast",
       "community": 13,
       "norm_label": "canonical()",
-      "community_name": "Tests Gads Mutations.Test.Ts",
+      "community_name": "Tests Gads Mutations Test",
       "id": "tests_gads_mutations_test_canonical"
     },
     {
@@ -3537,7 +3537,7 @@
       "_origin": "ast",
       "community": 13,
       "norm_label": "confirmphrase()",
-      "community_name": "Tests Gads Mutations.Test.Ts",
+      "community_name": "Tests Gads Mutations Test",
       "id": "tests_gads_mutations_test_confirmphrase"
     },
     {
@@ -3548,7 +3548,7 @@
       "_origin": "ast",
       "community": 7,
       "norm_label": "google-client.test.ts",
-      "community_name": "Src Google 2",
+      "community_name": "Src Google Client",
       "id": "tests_google_client_test"
     },
     {
@@ -3559,7 +3559,7 @@
       "_origin": "ast",
       "community": 7,
       "norm_label": "test_config",
-      "community_name": "Src Google 2",
+      "community_name": "Src Google Client",
       "id": "tests_google_client_test_test_config"
     },
     {
@@ -3570,7 +3570,7 @@
       "_origin": "ast",
       "community": 7,
       "norm_label": "fetchcalls",
-      "community_name": "Src Google 2",
+      "community_name": "Src Google Client",
       "id": "tests_google_client_test_fetchcalls"
     },
     {
@@ -3581,7 +3581,7 @@
       "_origin": "ast",
       "community": 7,
       "norm_label": "fetchresponsequeue",
-      "community_name": "Src Google 2",
+      "community_name": "Src Google Client",
       "id": "tests_google_client_test_fetchresponsequeue"
     },
     {
@@ -3593,7 +3593,7 @@
       "_origin": "ast",
       "community": 7,
       "norm_label": "mockfetch()",
-      "community_name": "Src Google 2",
+      "community_name": "Src Google Client",
       "id": "tests_google_client_test_mockfetch"
     },
     {
@@ -3605,7 +3605,7 @@
       "_origin": "ast",
       "community": 7,
       "norm_label": "makeresponse()",
-      "community_name": "Src Google 2",
+      "community_name": "Src Google Client",
       "id": "tests_google_client_test_makeresponse"
     },
     {
@@ -3616,7 +3616,7 @@
       "_origin": "ast",
       "community": 12,
       "norm_label": "meta-client.test.ts",
-      "community_name": "Tests Meta Client.Test.Ts",
+      "community_name": "Tests Meta Client Test",
       "id": "tests_meta_client_test"
     },
     {
@@ -3627,7 +3627,7 @@
       "_origin": "ast",
       "community": 12,
       "norm_label": "test_account",
-      "community_name": "Tests Meta Client.Test.Ts",
+      "community_name": "Tests Meta Client Test",
       "id": "tests_meta_client_test_test_account"
     },
     {
@@ -3638,7 +3638,7 @@
       "_origin": "ast",
       "community": 12,
       "norm_label": "fetchcalls",
-      "community_name": "Tests Meta Client.Test.Ts",
+      "community_name": "Tests Meta Client Test",
       "id": "tests_meta_client_test_fetchcalls"
     },
     {
@@ -3649,7 +3649,7 @@
       "_origin": "ast",
       "community": 12,
       "norm_label": "fetchresponsequeue",
-      "community_name": "Tests Meta Client.Test.Ts",
+      "community_name": "Tests Meta Client Test",
       "id": "tests_meta_client_test_fetchresponsequeue"
     },
     {
@@ -3661,7 +3661,7 @@
       "_origin": "ast",
       "community": 12,
       "norm_label": "mockfetch()",
-      "community_name": "Tests Meta Client.Test.Ts",
+      "community_name": "Tests Meta Client Test",
       "id": "tests_meta_client_test_mockfetch"
     },
     {
@@ -3673,7 +3673,7 @@
       "_origin": "ast",
       "community": 12,
       "norm_label": "makeresponse()",
-      "community_name": "Tests Meta Client.Test.Ts",
+      "community_name": "Tests Meta Client Test",
       "id": "tests_meta_client_test_makeresponse"
     },
     {
@@ -3684,7 +3684,7 @@
       "_origin": "ast",
       "community": 0,
       "norm_label": "metrics.test.ts",
-      "community_name": "Src Linkedin",
+      "community_name": "Src Linkedin Tools",
       "id": "tests_metrics_test"
     },
     {
@@ -3695,7 +3695,7 @@
       "_origin": "ast",
       "community": 6,
       "norm_label": "safety.test.ts",
-      "community_name": "Src Meta",
+      "community_name": "Src Meta Tools",
       "id": "tests_safety_test"
     },
     {
@@ -3706,7 +3706,7 @@
       "_origin": "ast",
       "community": 8,
       "norm_label": "tsconfig.json",
-      "community_name": "Tsconfig.Json",
+      "community_name": "Tsconfig",
       "id": "tsconfig"
     },
     {
@@ -3717,7 +3717,7 @@
       "_origin": "ast",
       "community": 8,
       "norm_label": "compileroptions",
-      "community_name": "Tsconfig.Json",
+      "community_name": "Tsconfig",
       "id": "tsconfig_compileroptions"
     },
     {
@@ -3728,7 +3728,7 @@
       "_origin": "ast",
       "community": 8,
       "norm_label": "target",
-      "community_name": "Tsconfig.Json",
+      "community_name": "Tsconfig",
       "id": "tsconfig_compileroptions_target"
     },
     {
@@ -3739,7 +3739,7 @@
       "_origin": "ast",
       "community": 8,
       "norm_label": "module",
-      "community_name": "Tsconfig.Json",
+      "community_name": "Tsconfig",
       "id": "tsconfig_compileroptions_module"
     },
     {
@@ -3750,7 +3750,7 @@
       "_origin": "ast",
       "community": 8,
       "norm_label": "moduleresolution",
-      "community_name": "Tsconfig.Json",
+      "community_name": "Tsconfig",
       "id": "tsconfig_compileroptions_moduleresolution"
     },
     {
@@ -3761,7 +3761,7 @@
       "_origin": "ast",
       "community": 8,
       "norm_label": "outdir",
-      "community_name": "Tsconfig.Json",
+      "community_name": "Tsconfig",
       "id": "tsconfig_compileroptions_outdir"
     },
     {
@@ -3772,7 +3772,7 @@
       "_origin": "ast",
       "community": 8,
       "norm_label": "rootdir",
-      "community_name": "Tsconfig.Json",
+      "community_name": "Tsconfig",
       "id": "tsconfig_compileroptions_rootdir"
     },
     {
@@ -3783,7 +3783,7 @@
       "_origin": "ast",
       "community": 8,
       "norm_label": "strict",
-      "community_name": "Tsconfig.Json",
+      "community_name": "Tsconfig",
       "id": "tsconfig_compileroptions_strict"
     },
     {
@@ -3794,7 +3794,7 @@
       "_origin": "ast",
       "community": 8,
       "norm_label": "esmoduleinterop",
-      "community_name": "Tsconfig.Json",
+      "community_name": "Tsconfig",
       "id": "tsconfig_compileroptions_esmoduleinterop"
     },
     {
@@ -3805,7 +3805,7 @@
       "_origin": "ast",
       "community": 8,
       "norm_label": "skiplibcheck",
-      "community_name": "Tsconfig.Json",
+      "community_name": "Tsconfig",
       "id": "tsconfig_compileroptions_skiplibcheck"
     },
     {
@@ -3816,7 +3816,7 @@
       "_origin": "ast",
       "community": 8,
       "norm_label": "resolvejsonmodule",
-      "community_name": "Tsconfig.Json",
+      "community_name": "Tsconfig",
       "id": "tsconfig_compileroptions_resolvejsonmodule"
     },
     {
@@ -3827,7 +3827,7 @@
       "_origin": "ast",
       "community": 8,
       "norm_label": "declaration",
-      "community_name": "Tsconfig.Json",
+      "community_name": "Tsconfig",
       "id": "tsconfig_compileroptions_declaration"
     },
     {
@@ -3838,7 +3838,7 @@
       "_origin": "ast",
       "community": 8,
       "norm_label": "sourcemap",
-      "community_name": "Tsconfig.Json",
+      "community_name": "Tsconfig",
       "id": "tsconfig_compileroptions_sourcemap"
     },
     {
@@ -3849,7 +3849,7 @@
       "_origin": "ast",
       "community": 8,
       "norm_label": "nounusedlocals",
-      "community_name": "Tsconfig.Json",
+      "community_name": "Tsconfig",
       "id": "tsconfig_compileroptions_nounusedlocals"
     },
     {
@@ -3860,7 +3860,7 @@
       "_origin": "ast",
       "community": 8,
       "norm_label": "nounusedparameters",
-      "community_name": "Tsconfig.Json",
+      "community_name": "Tsconfig",
       "id": "tsconfig_compileroptions_nounusedparameters"
     },
     {
@@ -3871,7 +3871,7 @@
       "_origin": "ast",
       "community": 8,
       "norm_label": "noimplicitoverride",
-      "community_name": "Tsconfig.Json",
+      "community_name": "Tsconfig",
       "id": "tsconfig_compileroptions_noimplicitoverride"
     },
     {
@@ -3882,7 +3882,7 @@
       "_origin": "ast",
       "community": 8,
       "norm_label": "exactoptionalpropertytypes",
-      "community_name": "Tsconfig.Json",
+      "community_name": "Tsconfig",
       "id": "tsconfig_compileroptions_exactoptionalpropertytypes"
     },
     {
@@ -3893,7 +3893,7 @@
       "_origin": "ast",
       "community": 8,
       "norm_label": "include",
-      "community_name": "Tsconfig.Json",
+      "community_name": "Tsconfig",
       "id": "tsconfig_include"
     },
     {
@@ -3904,7 +3904,7 @@
       "_origin": "ast",
       "community": 8,
       "norm_label": "src/**/*",
-      "community_name": "Tsconfig.Json",
+      "community_name": "Tsconfig",
       "id": "ref_src"
     }
   ],
