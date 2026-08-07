@@ -27,3 +27,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Mutation safety gates (`dry_run` default-true, `MARKETING_OPS_MCP_EXECUTE=1`).
 - Turso audit logging for all tool calls.
 - MCP Resource endpoints (`audit://recent`, `audit://mutations`).
+## 2026-08-07 16:30:14 — 7ba4a589a72d58e4e45a4656c5a806cc01c99593
+
+**Message:** graphify: add per-repo knowledge graph and OpenCode plugin
+
+**Files:** .gitignore,.opencode/opencode.json .opencode/plugins/graphify.js,AGENTS.md graphify-out/.graphify_analysis.json,graphify-out/.graphify_labels.json graphify-out/.graphify_root,graphify-out/GRAPH_REPORT.md graphify-out/graph.json,graphify-out/manifest.json
+
