@@ -4,3 +4,15 @@ dist/
 .env.local
 *.log
 .DS_Store
+
+# graphify output JSON exceptions (in case broad *.json patterns are used)
+!graphify-out/*.json
+!graphify-out/**/*.json
+!.opencode/*.json
+!.opencode/**/*.json
+
+# graphify local-only / cache / generated sidecars
+graphify-out/cost.json
+graphify-out/cache/
+graphify-out/converted/
+graphify-out/20*-*-*/
