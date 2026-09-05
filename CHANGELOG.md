@@ -39,3 +39,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 **Files:** graphify-out/.graphify_labels.json,graphify-out/GRAPH_REPORT.md graphify-out/graph.json
 
+## 2026-09-05 18:33:43 — 7ef58148db2ba5ab62e0af609a114ca31b0ccbba
+
+**Message:** chore: ignore graft cache, keep graft greppable via .ignore
+
+**Files:** .gitignore,.ignore
+
